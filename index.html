@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  </head>
+  <body>
+    <div class="alignCenter">
+      Сегодня:
+      <span ng-bind="todaysDate"></span>
+    </div>
+    
+    <!-- separate template -->
+    <div id="mainTodoList">
+      <div class="alignCenter">To-do list</div>
+      <div id="todoList"></div>
+      <div></div>
+    </div>
+    <!-- same template -->
+    <div id="mainMeetings">
+      <div class="alignCenter">Meetings</div>
+      <div id="meetingsList"></div>
+      <div></div>
+    </div>
+    <!-- separate template -->
+    <div id="mainEvents">
+      <div class="alignCenter">Events</div>
+      <div id="eventList"></div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/service/service.module.js"></script>
+    <script src="js/todo/todo.module.js"></script>
+    <script src="js/event/event.module.js"></script>
+    <script src="js/meeting/meeting.module.js"></script>
+  </body>
+</html>
+
