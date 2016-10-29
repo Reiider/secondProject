@@ -1,0 +1,28 @@
+body {
+	font-family: 'Bank Gothic BT Medium';
+}
+
+.alignCenter{
+  text-align: center;
+  font-size: 20px;
+}
+
+#todayDate{
+  font-size: 26px;
+}
+
+#mainTodoList{
+  width:30%;
+  float:left;
+  margin-left: 5%;
+}
+
+#mainMeetings{
+  width: 30%;
+  float: left;
+}
+
+#mainEvents{
+  width: 30%;
+  float:left;
+}
