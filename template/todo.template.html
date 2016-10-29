@@ -1,19 +1,20 @@
 <div style="margin-bottom:7px;">
   <input type="text" ng-model="$ctrl.textAdd">
-  <input type="button" ng-click="$ctrl.add()" value="add">
+  <input type="button" ng-click="$ctrl.add()" value="Add">
 </div>
 <div id="todoList">
   <table width="100%" cols="4" >
     <tr ng-repeat="elem in $ctrl.obj.elems" ng-class="{opt: optional}">
-      <td><input type="checkbox" ng-model="$ctrl.obj.elems[$index].select"></td>
-      <td><span ng-bind="elem.text"></span></td>
-      <td><img ng-src="{{$ctrl.obj.pathCompleteOrNot}}" ng-click="$ctrl.completeOrNot($index)"></td>
+      <td><input type="checkbox" ng-model="elem.select"></td>
+      <td ng-class="{ complete: elem.complete}"><span ng-bind="elem.text"></span></td>
+      <td><img width="20px" height="20px" ng-src="img/complete{{elem.complete}}.png" ng-click="$ctrl.completeOrNot($index)"></td>
       <td><input type="checkbox" ng-model="optional"></td>
     </tr>
   </table>
 </div>
 <div>
   <div style="margin-top:7px;">
-    <input  type="button" ng-click="$ctrl.deleteSelectTodos()" value="delete">
+    <input  type="button" ng-click="$ctrl.deleteSelectTodos()" value="Delete">
+    <div style="float:right;">optional</div>
   </div>
 </div>

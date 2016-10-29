@@ -9,9 +9,6 @@
     
     var obj = {};
     obj.elems = [];
-    obj.pathCompleteOrNot = "";
-    var pathForImgCompleteTrue = "";  //complete (v)
-    var pathForImgCompleteFalse = ""; //not complete (x)
     
     this.setElems = setElems;
     this.getObj = getObj;
@@ -45,14 +42,10 @@
     
     function completeOrNot(index){
       if(obj.elems[index].complete){
-        obj.pathCompleteOrNot = pathForImgCompleteFalse;
         obj.elems[index].complete = false;
-        //change background to white
       }
       else{
-        obj.pathCompleteOrNot = pathForImgCompleteTrue;
         obj.elems[index].complete = true;
-        //change background to green
       }
     }
     
