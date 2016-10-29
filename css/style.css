@@ -7,22 +7,36 @@ body {
   font-size: 20px;
 }
 
+.opt{
+  color: gray;
+}
+
 #todayDate{
   font-size: 26px;
 }
 
 #mainTodoList{
   width:30%;
+  height:300px;
+
   float:left;
-  margin-left: 5%;
+  margin-left: 2%;
 }
 
 #mainMeetings{
   width: 30%;
   float: left;
+  margin-left: 3%;
 }
 
 #mainEvents{
   width: 30%;
   float:left;
+  margin-left: 3%;
+}
+
+#todoList{
+  overflow: auto;
+  width: 100%;
+  border: 1px solid black;
 }
