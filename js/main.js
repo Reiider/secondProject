@@ -1,10 +1,11 @@
 (function() {
 
-  angular.module('app', [
-  'service',
-	'todo',
-	'meeting',
-	'event'
+  angular
+  .module('app', [
+    'service',
+    'todo',
+    'meeting',
+    'event'
   ]);
 
 })();
