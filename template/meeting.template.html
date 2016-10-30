@@ -1,0 +1,27 @@
+<div width="100%" style="margin-bottom:7px;">
+  <input style="width:15%" type="text" ng-model="$ctrl.timeAdd" placeholder="время">
+  <input style="width:55%" type="text" ng-model="$ctrl.textAdd" placeholder="подробности">
+  <input style="float:right" type="button" ng-click="$ctrl.add()" value="Добавить">
+</div>
+<div class="todoOrMeetingList">
+  <table width="100%" cols="4" >
+    <tr ng-repeat="elem in $ctrl.obj.elems" ng-class="{opt: optional}">
+      <td><input type="checkbox" ng-model="elem.select"></td>
+      <td>
+        <div ng-class="{ complete: elem.complete}">
+          <span style="color:gray;" ng-bind="elem.time"></span>
+          <div ng-bind="elem.text"></div>
+          <hr>
+        </div>
+      </td>
+      <td><img width="20px" height="20px" ng-src="img/complete{{elem.complete}}.png" ng-click="$ctrl.completeOrNot($index)"></td>
+      <td><input type="checkbox" ng-model="optional"></td>
+    </tr>
+  </table>
+</div>
+<div>
+  <div style="margin-top:7px;">
+    <input  type="button" ng-click="$ctrl.deleteSelectTodos()" value="Удалить">
+    <div style="float:right;">не обязательно</div>
+  </div>
+</div>

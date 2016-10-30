@@ -1,8 +1,8 @@
 <div width="100%" style="margin-bottom:7px;">
-  <input style="width:70%" type="text" ng-model="$ctrl.textAdd">
+  <input style="width:70%" type="text" ng-model="$ctrl.textAdd" placeholder="текст">
   <input style="float:right" type="button" ng-click="$ctrl.add()" value="Добавить">
 </div>
-<div id="todoList">
+<div class="todoOrMeetingList">
   <table width="100%" cols="4" >
     <tr ng-repeat="elem in $ctrl.obj.elems" ng-class="{opt: optional}">
       <td><input type="checkbox" ng-model="elem.select"></td>
