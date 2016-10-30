@@ -12,17 +12,20 @@
       <span ng-bind="TC.today.date"></span>
     </div>
     
-    <!-- separate template -->
+    <div ng-controller="FinderController as Finder">
+      <input ng-model="Finder.filter.find" type="text" placeholder="Поиск">
+    </div>
+    
     <div id="mainTodoList">
       <div class="alignCenter">Дела</div>
       <todo-list></todo-list>
     </div>
-    <!-- same template -->
+
     <div id="mainMeetings">
       <div class="alignCenter">Встречи</div>
       <meeting-list></meeting-list>
     </div>
-    <!-- separate template -->
+
     <div id="mainEvents">
       <div class="alignCenter">События</div>
       <event-list></event-list>
@@ -30,6 +33,7 @@
     
     <script src="js/main.js"></script>
       <script src="js/today.controller.js"></script>
+      <script src="js/finder.controller.js"></script>
     <script src="js/service/service.module.js"></script>
       <script src="js/service/load.service.js"></script>
       <script src="js/service/today.service.js"></script>

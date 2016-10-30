@@ -19,5 +19,4 @@
     vm.deleteSelectTodos = function(){todoService.deleteSelectTodos();}
   }
   
-
 })();

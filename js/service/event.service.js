@@ -9,11 +9,13 @@
     
     var obj = {};
     obj.elems = [];
+    obj.filter = {};
+    obj.filter.find = "";
     
-    this.setElems = setElems;
-    this.getObj = getObj;
-    this.add = add;
-    this.deleteSelectTodos = deleteSelectTodos;
+    serv.setElems = setElems;
+    serv.getObj = getObj;
+    serv.add = add;
+    serv.deleteSelectTodos = deleteSelectTodos;
     
     function setElems(elements){
       for(var i = 0; i < elements.length; i++){
