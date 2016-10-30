@@ -3,7 +3,7 @@
   <input style="width:55%" type="text" ng-model="$ctrl.textAdd" placeholder="подробности">
   <input style="float:right" type="button" ng-click="$ctrl.add()" value="Добавить">
 </div>
-<div class="todoOrMeetingList">
+<div class="lists">
   <table width="100%" cols="4" >
     <tr ng-repeat="elem in $ctrl.obj.elems" ng-class="{opt: optional}">
       <td><input type="checkbox" ng-model="elem.select"></td>

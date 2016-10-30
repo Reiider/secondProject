@@ -4,12 +4,12 @@
   .module('meeting')
   .component('meetingList', {
     templateUrl: 'template/meeting.template.html',
-    controller: Meeting
+    controller: MeetingController
   });
   
-  Meeting.$inject = ['meetingService'];
+  MeetingController.$inject = ['meetingService'];
   
-  function Meeting(meetingService){
+  function MeetingController(meetingService){
     var vm = this;
     vm.obj = meetingService.getObj();
     vm.textAdd = "";
