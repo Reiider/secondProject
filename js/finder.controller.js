@@ -9,7 +9,7 @@
   function FinderController(todoService, meetingService, eventService){
     var vm = this;
     vm.filter = {};
-    vm.filter.find = "";
+    
     vm.objTodo = todoService.getObj();
     vm.objMeeting = meetingService.getObj();
     vm.objEvent = eventService.getObj();

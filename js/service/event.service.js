@@ -10,7 +10,6 @@
     var obj = {};
     obj.elems = [];
     obj.filter = {};
-    obj.filter.find = "";
     
     serv.setElems = setElems;
     serv.getObj = getObj;

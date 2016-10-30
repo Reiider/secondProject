@@ -10,12 +10,10 @@
     var obj = {};
     obj.elems = [];
     obj.filter = {};
-    obj.filter.find = "";
     
     serv.setElems = setElems;
     serv.getObj = getObj;
     serv.add = add;
-    serv.completeOrNot = completeOrNot;
     serv.deleteSelectTodos = deleteSelectTodos;
     
     function setElems(elements){
@@ -24,6 +22,7 @@
           select: false, 
           text: elements[i].text,
           complete: false,
+          optional: false,
           time: elements[i].time
         });
       }
@@ -39,17 +38,9 @@
           select: false, 
           text: text,
           complete: false,
+          optional: false,
           time: time
         })
-      }
-    }
-    
-    function completeOrNot(index){
-      if(obj.elems[index].complete){
-        obj.elems[index].complete = false;
-      }
-      else{
-        obj.elems[index].complete = true;
       }
     }
     

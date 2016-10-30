@@ -15,7 +15,6 @@
     vm.textAdd = "";
     
     vm.add = function(){todoService.add(vm.textAdd);}
-    vm.completeOrNot = function(index){todoService.completeOrNot(index);}
     vm.deleteSelectTodos = function(){todoService.deleteSelectTodos();}
   }
   

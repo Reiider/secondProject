@@ -4,7 +4,7 @@
 </div>
 <div class="lists">
   <table width="100%" cols="2" >
-    <tr ng-repeat="elem in $ctrl.obj.elems | filter:$ctrl.obj.filter.find">
+    <tr ng-repeat="elem in $ctrl.obj.elems | filter:$ctrl.obj.filter.find | orderBy:$ctrl.obj.filter.order">
       <td><input type="checkbox" ng-model="elem.select"></td>
       <td><div ng-bind="elem.text"></div><hr></td>
     </tr>

@@ -14,6 +14,17 @@
     
     <div ng-controller="FinderController as Finder">
       <input ng-model="Finder.filter.find" type="text" placeholder="Поиск">
+      <span>Сортировка:<span>
+      <select ng-model="Finder.filter.order">
+        <option value="">без сортировки</option>
+        <option value="text">по содержимому</option>
+        <option value="complete">по завершенности</option>
+        <option value="optional">по важности</option>
+        <option value="time">по времени</option>
+        
+        
+      </select>
+      
     </div>
     
     <div id="mainTodoList">

@@ -10,12 +10,10 @@
     var obj = {};
     obj.elems = [];
     obj.filter = {};
-    obj.filter.find = "";
     
     serv.setElems = setElems;
     serv.getObj = getObj;
     serv.add = add;
-    serv.completeOrNot = completeOrNot;
     serv.deleteSelectTodos = deleteSelectTodos;
     
     function setElems(elements){
@@ -23,7 +21,8 @@
         obj.elems.push({
           select: false, 
           text: elements[i],
-          complete: false
+          complete: false,
+          optional: false
         });
       }
     }
@@ -37,17 +36,9 @@
         obj.elems.push({
           select: false, 
           text: text,
-          complete: false
+          complete: false,
+          optional: false
         })
-      }
-    }
-    
-    function completeOrNot(index){
-      if(obj.elems[index].complete){
-        obj.elems[index].complete = false;
-      }
-      else{
-        obj.elems[index].complete = true;
       }
     }
     
