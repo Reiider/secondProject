@@ -22,6 +22,17 @@ body {
   border: 1px solid black;
 }
 
+#searches{
+  margin-left:2%;
+  width:30%;
+  margin-right:3%;
+}
+
+#sort{
+  margin-left:2%;
+  margin-top:7px;
+}
+
 #todayDate{
   font-size: 26px;
 }

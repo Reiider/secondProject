@@ -11,22 +11,20 @@
       Сегодня:
       <span ng-bind="TC.today.date"></span>
     </div>
-    
+    <hr>
     <div ng-controller="FinderController as Finder">
-      <input ng-model="Finder.filter.find" type="text" placeholder="Поиск">
-      <span>Сортировка:<span>
-      <select ng-model="Finder.filter.order">
-        <option value="">без сортировки</option>
-        <option value="text">по содержимому</option>
-        <option value="complete">по завершенности</option>
-        <option value="optional">по важности</option>
-        <option value="time">по времени</option>
-        
-        
-      </select>
-      
+      <input id="searches" ng-model="Finder.filter.find" type="text" placeholder="Поиск">
+      <div id="sort">Сортировка:
+        <select ng-model="Finder.filter.order">
+          <option value="">без сортировки</option>
+          <option value="text">по содержимому</option>
+          <option value="complete">по завершенности</option>
+          <option value="optional">по важности</option>
+          <option value="time">по времени</option>        
+        </select>  
+      </div>
     </div>
-    
+    <hr>
     <div id="mainTodoList">
       <div class="alignCenter">Дела</div>
       <todo-list></todo-list>
