@@ -21,7 +21,7 @@ body {
 
 #mainTodoList{
   width:30%;
-  height:340px;
+  height:auto;
 
   float:left;
   margin-left: 2%;
