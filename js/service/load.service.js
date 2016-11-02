@@ -14,12 +14,13 @@
     
     function load(){
       var random = getRandomInt(1, 3);
-      $http.get("json/"+random+".json").then(function(res){
+      $http.get("json/"+random+"q.json").then(function(res){
           var data = res.data;
           todayService.setTodayDate(data.date);
           return loadNextFile(data.path);
         }, function(){
           alert("error of loading first file");
+          return Promise.reject();
         }
       ).then(function(res){
           var data = res.data;
@@ -27,6 +28,7 @@
           return loadNextFile(data.path);
         }, function(){
           alert("error of loading second file");
+          return Promise.reject();
         } 
       ).then(function(res){
           var data = res.data;
@@ -34,6 +36,7 @@
           return loadNextFile(data.path);
         }, function(){
           alert("error of loading third file");
+          return Promise.reject();
         } 
       ).then(function(res){
           var data = res.data;
@@ -41,7 +44,9 @@
         }, function(){
           alert("error of loading fourth file");
         } 
-      );
+      ).catch(function(){
+        alert('error');
+      });
      
     }
     
