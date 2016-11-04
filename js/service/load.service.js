@@ -14,7 +14,7 @@
     
     function load(){
       var random = getRandomInt(1, 3);
-      $http.get("json/"+random+"q.json").then(function(res){
+      $http.get("json/"+random+".json").then(function(res){
           var data = res.data;
           todayService.setTodayDate(data.date);
           return loadNextFile(data.path);
