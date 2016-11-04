@@ -3,6 +3,7 @@
   
   angular
   .module('app', [
+    'ui.router',
     'service',
     'todo',
     'meeting',

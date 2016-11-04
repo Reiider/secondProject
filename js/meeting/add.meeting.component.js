@@ -4,7 +4,7 @@
   angular
   .module('meeting')
   .component('meetingAdd', {
-    templateUrl: 'template/meeting/add.html',
+    templateUrl: 'js/meeting/templates/add.html',
     controller: MeetingAdd,
     controllerAs: 'Add',
     bindings:{

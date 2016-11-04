@@ -4,7 +4,7 @@
   angular
   .module('todo')
   .component('todoView', {
-    templateUrl: 'template/todo/view.html',
+    templateUrl: 'js/todo/templates/view.html',
     controller: TodoView,
     controllerAs: 'View',
     bindings:{

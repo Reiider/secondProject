@@ -1,8 +1,8 @@
-<div class="lists">
+<div class="listView">
   <table width="100%" cols="4" >
     <tr ng-repeat="elem in View.object.elems | filter:View.filter.find | orderBy:View.filter.order">
       <td><input type="checkbox" ng-model="elem.select"></td>
-      <td ng-class="{forDelete: elem.select}"><div ng-bind="elem.text"></div><hr></td>
+      <td ng-class="{listForDelete: elem.select}"><div ng-bind="elem.text"></div><hr></td>
     </tr>
   </table>
 </div>

@@ -4,7 +4,7 @@
   angular
   .module('event')
   .component('eventAdd', {
-    templateUrl: 'template/event/add.html',
+    templateUrl: 'js/event/templates/add.html',
     controller: EventAdd,
     controllerAs: 'Add',
     bindings:{

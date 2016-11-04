@@ -4,7 +4,7 @@
   angular
   .module('event')
   .component('eventDelete', {
-    templateUrl: 'template/event/delete.html',
+    templateUrl: 'js/event/templates/delete.html',
     controller: EventDelete,
     controllerAs: 'Delete',
     bindings:{

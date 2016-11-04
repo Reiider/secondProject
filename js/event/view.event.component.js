@@ -4,7 +4,7 @@
   angular
   .module('event')
   .component('eventView', {
-    templateUrl: 'template/event/view.html',
+    templateUrl: 'js/event/templates/view.html',
     controller: EventView,
     controllerAs: 'View',
     bindings:{

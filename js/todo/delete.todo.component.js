@@ -4,7 +4,7 @@
   angular
   .module('todo')
   .component('todoDelete', {
-    templateUrl: 'template/todo/delete.html',
+    templateUrl: 'js/todo/templates/delete.html',
     controller: TodoDelete,
     controllerAs: 'Delete',
     bindings:{

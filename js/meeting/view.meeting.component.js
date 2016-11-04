@@ -4,7 +4,7 @@
   angular
   .module('meeting')
   .component('meetingView', {
-    templateUrl: 'template/meeting/view.html',
+    templateUrl: 'js/meeting/templates/view.html',
     controller: MeetingView,
     controllerAs: 'View',
     bindings:{

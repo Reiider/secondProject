@@ -4,7 +4,7 @@
   angular
   .module('event')
   .component('eventList', {
-    templateUrl:'template/eventList.html',
+    templateUrl:'js/event/templates/eventList.html',
     controller: EventList,
     controllerAs: 'Event',
     bindings:{

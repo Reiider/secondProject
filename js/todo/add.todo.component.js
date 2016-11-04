@@ -4,7 +4,7 @@
   angular
   .module('todo')
   .component('todoAdd', {
-    templateUrl: 'template/todo/add.html',
+    templateUrl: 'js/todo/templates/add.html',
     controller: TodoAdd,
     controllerAs: 'Add',
     bindings:{

@@ -4,7 +4,7 @@
   angular
   .module('meeting')
   .component('meetingDelete', {
-    templateUrl: 'template/meeting/delete.html',
+    templateUrl: 'js/meeting/templates/delete.html',
     controller: MeetingDelete,
     controllerAs: 'Delete',
     bindings:{

@@ -7,25 +7,6 @@ body {
   font-size: 20px;
 }
 
-.opt{
-  color: orange;
-}
-
-.complete{
-  background-color:rgb(0,180,0);
-}
-
-.lists{
-  overflow: auto;
-  width: 100%;
-  height:340px;
-  border: 1px solid black;
-}
-
-.forDelete{
-  text-decoration: line-through;
-}
-
 #searches{
   margin-left:2%;
   width:30%;
@@ -37,7 +18,7 @@ body {
   margin-top:7px;
 }
 
-#todayDate{
+.header{
   font-size: 26px;
 }
 

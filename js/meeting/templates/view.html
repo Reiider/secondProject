@@ -1,15 +1,15 @@
-<div class="lists">
+<div class="listView">
   <table width="100%" cols="4" >
     <tr ng-repeat="elem in View.object.elems | filter:View.filter.find | orderBy:View.filter.order">
       <td><input type="checkbox" ng-model="elem.select"></td>
-      <td ng-class="{forDelete: elem.select}">
-        <div ng-class="{complete: elem.complete, opt: elem.optional}">
-          <span style="color:gray;" ng-bind="elem.time"></span>
+      <td ng-class="{listForDelete: elem.select}">
+        <div ng-class="{listComplete: elem.complete, listOptional: elem.optional}">
+          <span class="listTime" ng-bind="elem.time"></span>
           <div ng-bind="elem.text"></div>
           <hr>
         </div>
       </td>
-      <td><img width="20px" height="20px" ng-src="img/complete{{elem.complete}}.png" ng-click="elem.complete = !elem.complete"></td>
+      <td><img class="listImg" ng-src="img/complete{{elem.complete}}.png" ng-click="elem.complete = !elem.complete"></td>
       <td><input type="checkbox" ng-model="elem.optional"></td>
     </tr>
   </table>
