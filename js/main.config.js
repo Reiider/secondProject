@@ -64,6 +64,10 @@
           mainService.setTodoPath(listDate[i].paths.todo);
           mainService.setMeetingPath(listDate[i].paths.meeting);
           mainService.setEventPath(listDate[i].paths.event);
+          
+          mainService.setElemsTodo();
+          mainService.setElemsMeeting();
+          mainService.setElemsEvent();
           deferred.resolve(true);
         }
       }
@@ -74,19 +78,16 @@
   
   getTodo.$inject = ['mainService'];
   function getTodo(mainService){
-    mainService.setElemsTodo();
     return mainService.getObjTodo();
   }
   
   getMeeting.$inject = ['mainService'];
   function getMeeting(mainService){
-    mainService.setElemsMeeting();
     return mainService.getObjMeeting();
   }
   
   getEvent.$inject = ['mainService'];
   function getEvent(mainService){
-    mainService.setElemsEvent();
     return mainService.getObjEvent();
   }
   

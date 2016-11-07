@@ -27,6 +27,7 @@
     function setTodo(obj){
       $http.get(obj.path).then(function(res){
           var elements = res.data;
+          obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
             obj.elems.push({
               select: false, 
@@ -44,6 +45,7 @@
     function setMeeting(obj){
       $http.get(obj.path).then(function(res){
           var elements = res.data;
+          obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
             obj.elems.push({
               select: false, 
@@ -62,6 +64,7 @@
     function setEvent(obj){
       $http.get(obj.path).then(function(res){
           var elements = res.data;
+          obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
             obj.elems.push({
               select: false, 
