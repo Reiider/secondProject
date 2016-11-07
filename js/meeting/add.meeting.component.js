@@ -22,7 +22,7 @@
     vm.addElem = addElem;
     
     function addElem(){
-      vm.add({text: vm.text, time: vm.text});
+      vm.add({text: vm.text, time: vm.time});
     }
   }
   
