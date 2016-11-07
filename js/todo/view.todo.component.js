@@ -2,7 +2,7 @@
   'use strict'
   
   angular
-  .module('todo')
+  .module('app.todo')
   .component('todoView', {
     templateUrl: 'js/todo/templates/view.html',
     controller: TodoView,

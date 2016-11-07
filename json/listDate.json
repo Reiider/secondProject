@@ -1,0 +1,26 @@
+[
+  { 
+    "date":"01-10-2010",
+    "paths":{
+      "todo":"json/01-10-2010/todos.json",
+      "meeting":"json/01-10-2010/meetings.json",
+      "event":"json/01-10-2010/events.json"
+    }
+  },
+  {
+    "date":"15-08-2013",
+    "paths":{
+      "todo":"json/15-08-2013/todos.json",
+      "meeting":"json/15-08-2013/meetings.json",
+      "event":"json/15-08-2013/events.json"
+    }
+  },
+  {
+    "date":"31-12-2012",
+    "paths":{
+      "todo":"json/31-12-2012/todos.json",
+      "meeting":"json/31-12-2012/meetings.json",
+      "event":"json/31-12-2012/events.json"
+    }
+  }
+]

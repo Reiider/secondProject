@@ -2,7 +2,7 @@
   'use strict'
   
   angular
-  .module('event')
+  .module('app.event')
   .component('eventAdd', {
     templateUrl: 'js/event/templates/add.html',
     controller: EventAdd,

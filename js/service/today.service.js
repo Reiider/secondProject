@@ -2,7 +2,7 @@
   'use strict'
   
   angular
-  .module('service')
+  .module('app.service')
   .service('todayService', TodayService);
   
   function TodayService(){

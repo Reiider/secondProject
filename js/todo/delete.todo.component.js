@@ -2,7 +2,7 @@
   'use strict'
   
   angular
-  .module('todo')
+  .module('app.todo')
   .component('todoDelete', {
     templateUrl: 'js/todo/templates/delete.html',
     controller: TodoDelete,

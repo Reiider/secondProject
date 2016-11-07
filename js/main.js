@@ -4,10 +4,10 @@
   angular
   .module('app', [
     'ui.router',
-    'service',
-    'todo',
-    'meeting',
-    'event'
+    'app.service',
+    'app.todo',
+    'app.meeting',
+    'app.event'
   ]);
 
 })();

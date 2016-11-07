@@ -2,7 +2,7 @@
   'use strict'
   
   angular
-  .module('meeting')
+  .module('app.meeting')
   .component('meetingDelete', {
     templateUrl: 'js/meeting/templates/delete.html',
     controller: MeetingDelete,

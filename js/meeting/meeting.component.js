@@ -2,7 +2,7 @@
   'use strict'
   
   angular
-  .module('meeting')
+  .module('app.meeting')
   .component('meetingList', {
     templateUrl:'js/meeting/templates/meetingList.html',
     controller: MeetingList,

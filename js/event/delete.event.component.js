@@ -2,7 +2,7 @@
   'use strict'
   
   angular
-  .module('event')
+  .module('app.event')
   .component('eventDelete', {
     templateUrl: 'js/event/templates/delete.html',
     controller: EventDelete,

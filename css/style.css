@@ -2,6 +2,38 @@ body {
 	font-family: 'Bank Gothic BT Medium';
 }
 
+#leftBox{
+  float:left;
+  margin-left:2%;
+  width:23%;
+  height: 520px;
+  overflow:auto;
+  margin-right:2%;
+  border: 1px solid black;
+}
+#rightBox{
+  float:left;
+  width:70%;
+  height:520px;
+  border: 1px solid black;
+}
+
+#TMElist{
+  float:left;
+  margin-top: 7px;
+  width:94%;
+  margin-left: 3%;
+  margin-right:3%;
+}
+
+.dateInList{
+  margin: 4px;
+  text-decoration:underline;
+}
+.clickDate{
+  color:red;
+}
+
 .alignCenter{
   text-align: center;
   font-size: 20px;
@@ -9,6 +41,7 @@ body {
 
 #searches{
   margin-left:2%;
+  margin-top:10px;
   width:30%;
   margin-right:3%;
 }
@@ -25,7 +58,7 @@ body {
 #mainTodoList{
   width:30%;
   height:auto;
-
+  border: 1px solid black;
   float:left;
   margin-left: 2%;
 }
@@ -34,10 +67,12 @@ body {
   width: 30%;
   float: left;
   margin-left: 3%;
+  border: 1px solid black;
 }
 
 #mainEvents{
   width: 30%;
   float:left;
   margin-left: 3%;
+  border: 1px solid black;
 }

@@ -5,21 +5,36 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list.css">
-    <script src="node_modules/angular/angular.min.js"></script>
-    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="//unpkg.com/angular@1.5/angular.js"></script>
+    <script src="//unpkg.com/angular-ui-router@1.0.0-beta.3/release/angular-ui-router.js"></script>
   </head>
   <body>
   
     <div class="alignCenter header">Что то вроде ежедневника</div>
+    <div id="leftBox" ng-controller="MainController as Main">
+      <ul class="alignCenter">
+        <li ng-repeat="elem in Main.obj.list">
+          <div class="dateInList" ng-class="{clickDate: elem.click}">
+            <a ui-sref="date.todo({id: elem.date})" ui-sref-active="active" ng-bind="elem.date"></a>
+          </div>
+        </li>
+      </ul>
+    </div>
     
-    <ui-view></ui-view>    
+    <div id="rightBox">
+      <ui-view></ui-view>
+    </div>
+        
     
     <script src="js/main.js"></script>
+      <script src="js/main.config.js"></script>
+      <script src="js/selectDate.component.js"></script>
       <script src="js/filter.controller.js"></script>
       <script src="js/today.controller.js"></script>
       <script src="js/main.controller.js"></script>
     <script src="js/service/service.module.js"></script>
-      <script src="js/service/load.service.js"></script>
+      <script src="js/service/loader.service.js"></script>
+      <script src="js/service/selectDate.service.js"></script>
       <script src="js/service/today.service.js"></script>
       <script src="js/service/main.service.js"></script>
     <script src="js/todo/todo.module.js"></script>

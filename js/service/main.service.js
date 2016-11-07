@@ -2,12 +2,14 @@
   'use strict'
   
   angular
-  .module('service')
+  .module('app.service')
   .service('mainService', MainService);
   
-  function MainService(){
+  MainService.$inject = ['loaderService'];
+  
+  function MainService(loaderService){
     var serv = this;
-    
+    serv.test = 'testing';
     var filter = {};
     serv.getFilter = getFilter;
     
@@ -15,64 +17,79 @@
     objTodo.elems = [];
     
     serv.setElemsTodo = setElemsTodo;
+    serv.setTodoPath = setTodoPath;
     serv.getObjTodo = getObjTodo;
     
     var objMeeting = {};
     objMeeting.elems = [];
     
     serv.setElemsMeeting = setElemsMeeting;
+    serv.setMeetingPath = setMeetingPath;
     serv.getObjMeeting = getObjMeeting;
     
     var objEvent = {};
     objEvent.elems = [];
     
     serv.setElemsEvent = setElemsEvent;
+    serv.setEventPath = setEventPath;
     serv.getObjEvent = getObjEvent;
+    
+    var loadNext = {};
+    loadNext['todo'] = objTodo;
+    loadNext['meeting'] = objMeeting;
+    loadNext['event'] = objEvent;
+    loadNext.text = '';
+    serv.setLoadFile = setLoadFile;
+    serv.getLoadFile = getLoadFile;
+    
+    serv.setSelectElem = setSelectElem;
+    serv.getSelectElem = getSelectElem;
+    var date = {};
+    date.date = "";
+    function setSelectElem(d){
+      date.date = d;
+    }
+    function getSelectElem(){
+      return date;
+    }
     
     function getFilter(){
       return filter;
     }
     
-    function setElemsTodo(elements){
-      for(var i = 0; i < elements.length; i++){
-        objTodo.elems.push({
-          select: false, 
-          text: elements[i],
-          complete: false,
-          optional: false
-        });
-      }
+    function setLoadFile(textObj){
+      loadNext.text = textObj;
+    }
+    function getLoadFile(){
+      return loadNext[loadNext.text];
     }
     
+    function setElemsTodo(){
+      loaderService.setTodo(objTodo);
+    }
+    function setTodoPath(path){
+      objTodo.path = path;
+    }
     function getObjTodo(){
       return objTodo;
     }
     
-    function setElemsMeeting(elements){
-      for(var i = 0; i < elements.length; i++){
-        objMeeting.elems.push({
-          select: false, 
-          text: elements[i].text,
-          complete: false,
-          optional: false,
-          time: elements[i].time
-        });
-      }
+    function setElemsMeeting(){
+      loaderService.setMeeting(objMeeting);
     }
-    
+    function setMeetingPath(path){
+      objMeeting.path = path;
+    }
     function getObjMeeting(){
       return objMeeting;
     }
     
-    function setElemsEvent(elements){
-      for(var i = 0; i < elements.length; i++){
-        objEvent.elems.push({
-          select: false, 
-          text: elements[i]
-        });
-      }
+    function setElemsEvent(){
+      loaderService.setEvent(objEvent);
     }
-    
+    function setEventPath(path){
+      objEvent.path = path;
+    }
     function getObjEvent(){
       return objEvent;
     }

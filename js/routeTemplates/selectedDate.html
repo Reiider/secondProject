@@ -1,0 +1,33 @@
+<div ng-controller="FilterController as Filter">
+  <input id="searches" ng-model="Filter.filter.find" type="text" placeholder="Поиск">
+  <div id="sort">Сортировка:
+    <select ng-model="Filter.filter.order">
+      <option value="">без сортировки</option>
+      <option value="text">по содержимому</option>
+      <option value="complete">по завершенности</option>
+      <option value="optional">по важности</option>
+      <option value="time">по времени</option>        
+    </select>  
+  </div>
+</div>
+<hr>
+
+<div id="mainTodoList">
+  <a ui-sref="date.todo" ui-sref-active="active" ng-click="$ctrl.clickLoadFile('todo')">
+    <div class="alignCenter">Дела</div>
+  </a>
+</div>
+<div id="mainMeetings">
+  <a ui-sref="date.meeting" ui-sref-active="active" ng-click="$ctrl.clickLoadFile('meeting')">
+    <div class="alignCenter">Встречи</div>
+  </a>
+</div>
+<div id="mainEvents">
+  <a ui-sref="date.event" ui-sref-active="active" ng-click="$ctrl.clickLoadFile('event')">
+    <div class="alignCenter">События</div>
+  </a>
+</div>
+
+<div id="TMElist">
+  <ui-view></ui-view>
+</div>
