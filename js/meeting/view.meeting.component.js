@@ -14,7 +14,7 @@
   });
   
   function MeetingView(){
-    var vm = this;
+
   }
   
 })();

@@ -13,7 +13,7 @@
   });
   
   function TodoDelete(){
-    var vm = this;
+    
   }
   
 })();

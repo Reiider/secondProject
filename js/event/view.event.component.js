@@ -14,7 +14,7 @@
   });
   
   function EventView(){
-    var vm = this;
+
   }
   
 })();

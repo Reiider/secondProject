@@ -13,7 +13,7 @@
   });
   
   function MeetingDelete(){
-    var vm = this;
+
   }
   
 })();

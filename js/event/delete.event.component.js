@@ -13,7 +13,7 @@
   });
   
   function EventDelete(){
-    var vm = this;
+
   }
   
 })();

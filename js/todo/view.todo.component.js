@@ -14,7 +14,7 @@
   });
   
   function TodoView(){
-    var vm = this;
+    
   }
   
 })();

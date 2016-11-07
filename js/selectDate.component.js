@@ -4,14 +4,14 @@
   angular
   .module('app')
   .component('selectDate', {
-    templateUrl:'js/routeTemplates/selectedDate.html',
+    templateUrl:'js/selectedDate.html',
     controller: SelectDate
   });
   
   SelectDate.$inject = ['mainService'];
   
   function SelectDate(mainService){
-    var vm = this;
+    
   }
 
 })();
