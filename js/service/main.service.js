@@ -13,28 +13,26 @@
     var filter = {};
     serv.getFilter = getFilter;
     
+    var massObject = {};
+    serv.loadFile = loadFile;
+    serv.newLoadFile = newLoadFile;
+    
     var objTodo = {};
     objTodo.elems = [];
-    objTodo.path = "";
     
     serv.setElemsTodo = setElemsTodo;
-    serv.setTodoPath = setTodoPath;
     serv.getObjTodo = getObjTodo;
     
     var objMeeting = {};
     objMeeting.elems = [];
-    objMeeting.path = "";
     
     serv.setElemsMeeting = setElemsMeeting;
-    serv.setMeetingPath = setMeetingPath;
     serv.getObjMeeting = getObjMeeting;
     
     var objEvent = {};
     objEvent.elems = [];
-    objEvent.path = "";
     
     serv.setElemsEvent = setElemsEvent;
-    serv.setEventPath = setEventPath;
     serv.getObjEvent = getObjEvent;
 
     var objListDate = {};
@@ -42,6 +40,27 @@
     
     serv.setListDate = setListDate;
     serv.getListDate = getListDate;
+    
+    function loadFile(date){
+      if(massObject[date]){
+        objTodo = massObject[date].todo;
+        objMeeting = massObject[date].meeting;
+        objEvent = massObject[date].event;
+        return true;
+      }
+      else return false;
+    }
+    function newLoadFile(elem){
+      massObject[elem.date] = {};
+      
+      setElemsTodo(elem.paths.todo);
+      setElemsMeeting(elem.paths.meeting);
+      setElemsEvent(elem.paths.event);
+      
+      massObject[elem.date].todo = objTodo;
+      massObject[elem.date].meeting = objMeeting;
+      massObject[elem.date].event = objEvent;
+    }
     
     function setListDate(){
       loaderService.setListDate(objListDate);
@@ -54,31 +73,22 @@
       return filter;
     }
     
-    function setElemsTodo(){
-      loaderService.setTodo(objTodo);
-    }
-    function setTodoPath(path){
-      objTodo.path = path;
+    function setElemsTodo(path){
+      loaderService.setTodo(objTodo, path);
     }
     function getObjTodo(){
       return objTodo;
     }
     
-    function setElemsMeeting(){
-      loaderService.setMeeting(objMeeting);
-    }
-    function setMeetingPath(path){
-      objMeeting.path = path;
+    function setElemsMeeting(path){
+      loaderService.setMeeting(objMeeting, path);
     }
     function getObjMeeting(){
       return objMeeting;
     }
     
-    function setElemsEvent(){
-      loaderService.setEvent(objEvent);
-    }
-    function setEventPath(path){
-      objEvent.path = path;
+    function setElemsEvent(path){
+      loaderService.setEvent(objEvent, path);
     }
     function getObjEvent(){
       return objEvent;

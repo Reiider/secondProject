@@ -53,27 +53,17 @@
     $urlRouterProvider.otherwise('/');
   }
 
-  setPaths.$inject = ['mainService', '$stateParams', '$q'];
-  function setPaths(mainService, $stateParams, $q){
-    var deferred = $q.defer();
-    setTimeout(function(){
-      var id = $stateParams.id;
+  setPaths.$inject = ['mainService', '$stateParams'];
+  function setPaths(mainService, $stateParams){
+    var id = $stateParams.id;
+    if(!mainService.loadFile(id)){
       var listDate = mainService.getListDate().list;
       for(var i = 0; i < listDate.length; i++){
         if(id === listDate[i].date){
-          mainService.setTodoPath(listDate[i].paths.todo);
-          mainService.setMeetingPath(listDate[i].paths.meeting);
-          mainService.setEventPath(listDate[i].paths.event);
-          
-          mainService.setElemsTodo();
-          mainService.setElemsMeeting();
-          mainService.setElemsEvent();
-          deferred.resolve(true);
+          mainService.newLoadFile(listDate[i]);
         }
       }
-      deferred.reject(false);
-    },0);
-    return deferred.promise;
+    }
   }
   
   getTodo.$inject = ['mainService'];

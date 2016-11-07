@@ -24,8 +24,8 @@
       );
     }
     
-    function setTodo(obj){
-      $http.get(obj.path).then(function(res){
+    function setTodo(obj, path){
+      $http.get(path).then(function(res){
           var elements = res.data;
           obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
@@ -42,8 +42,8 @@
       );
     }
     
-    function setMeeting(obj){
-      $http.get(obj.path).then(function(res){
+    function setMeeting(obj, path){
+      $http.get(path).then(function(res){
           var elements = res.data;
           obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
@@ -61,8 +61,8 @@
       );
     }
     
-    function setEvent(obj){
-      $http.get(obj.path).then(function(res){
+    function setEvent(obj, path){
+      $http.get(path).then(function(res){
           var elements = res.data;
           obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
