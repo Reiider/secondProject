@@ -63,7 +63,7 @@
     }
     
     function setListDate(){
-      loaderService.setListDate(objListDate);
+      objListDate = loaderService.setListDate();
     }
     function getListDate(){
       return objListDate;
@@ -74,21 +74,21 @@
     }
     
     function setElemsTodo(path){
-      loaderService.setTodo(objTodo, path);
+      objTodo = loaderService.setTodo(path);
     }
     function getObjTodo(){
       return objTodo;
     }
     
     function setElemsMeeting(path){
-      loaderService.setMeeting(objMeeting, path);
+      objMeeting = loaderService.setMeeting(path);
     }
     function getObjMeeting(){
       return objMeeting;
     }
     
     function setElemsEvent(path){
-      loaderService.setEvent(objEvent, path);
+      objEvent = loaderService.setEvent(path);
     }
     function getObjEvent(){
       return objEvent;

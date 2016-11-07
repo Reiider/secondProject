@@ -15,19 +15,23 @@
     serv.setMeeting = setMeeting;
     serv.setEvent = setEvent;
     
-    function setListDate(obj){
+    function setListDate(){
+      var obj = {};
+      obj.list = [];
       $http.get("json/listDate.json").then(function(res){
           obj.list = res.data;
         }, function(){
           alert("error: file with dates not loaded");
         }
       );
+      return obj;
     }
     
-    function setTodo(obj, path){
+    function setTodo(path){
+      var obj = {};
+      obj.elems = [];
       $http.get(path).then(function(res){
           var elements = res.data;
-          obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
             obj.elems.push({
               select: false, 
@@ -40,12 +44,14 @@
           alert("error: file with Todo not loaded");
         }
       );
+      return obj;
     }
     
-    function setMeeting(obj, path){
+    function setMeeting(path){
+      var obj = {};
+      obj.elems = [];
       $http.get(path).then(function(res){
           var elements = res.data;
-          obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
             obj.elems.push({
               select: false, 
@@ -59,12 +65,14 @@
           alert("error: file with Todo not loaded");
         }
       );
+      return obj;
     }
     
-    function setEvent(obj, path){
+    function setEvent(path){
+      var obj = {};
+      obj.elems = [];
       $http.get(path).then(function(res){
           var elements = res.data;
-          obj.elems.length = 0;
           for(var i = 0; i < elements.length; i++){
             obj.elems.push({
               select: false, 
@@ -75,6 +83,7 @@
           alert("error: file with Todo not loaded");
         }
       );
+      return obj;
     }
     
   }
