@@ -3,11 +3,11 @@
   
   angular
   .module('app.service')
-  .service('selectDateService', SelectDateService);
+  .service('listDateService', ListDateService);
   
-  SelectDateService.$inject = ['loaderService'];
+  ListDateService.$inject = ['loaderService'];
   
-  function SelectDateService(loaderService){
+  function ListDateService(loaderService){
     var serv = this;
     
     var obj = {};

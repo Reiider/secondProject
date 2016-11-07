@@ -14,7 +14,7 @@
     <div id="leftBox" ng-controller="MainController as Main">
       <ul class="alignCenter">
         <li ng-repeat="elem in Main.obj.list">
-          <div class="dateInList" ng-class="{clickDate: elem.click}">
+          <div class="dateInList">
             <a ui-sref="date.todo({id: elem.date})" ui-sref-active="active" ng-bind="elem.date"></a>
           </div>
         </li>
@@ -30,11 +30,9 @@
       <script src="js/main.config.js"></script>
       <script src="js/selectDate.component.js"></script>
       <script src="js/filter.controller.js"></script>
-      <script src="js/today.controller.js"></script>
       <script src="js/main.controller.js"></script>
     <script src="js/service/service.module.js"></script>
       <script src="js/service/loader.service.js"></script>
-      <script src="js/service/selectDate.service.js"></script>
       <script src="js/service/today.service.js"></script>
       <script src="js/service/main.service.js"></script>
     <script src="js/todo/todo.module.js"></script>

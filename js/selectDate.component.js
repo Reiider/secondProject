@@ -12,7 +12,6 @@
   
   function SelectDate(mainService){
     var vm = this;
-    
   }
 
 })();

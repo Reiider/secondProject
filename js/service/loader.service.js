@@ -12,18 +12,12 @@
     
     serv.setListDate = setListDate;
     serv.setTodo = setTodo;
-    serv.setMiting = setMiting;
+    serv.setMeeting = setMeeting;
     serv.setEvent = setEvent;
     
     function setListDate(obj){
       $http.get("json/listDate.json").then(function(res){
           obj.list = res.data;
-          //add "click" for style
-          var i = 0;
-          while(i < obj.list.length){
-            obj.list[i].click = false;
-            i++;
-          }
         }, function(){
           alert("error: file with dates not loaded");
         }
@@ -47,7 +41,7 @@
       );
     }
     
-    function setMiting(obj){
+    function setMeeting(obj){
       $http.get(obj.path).then(function(res){
           var elements = res.data;
           for(var i = 0; i < elements.length; i++){

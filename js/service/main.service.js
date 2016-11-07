@@ -9,12 +9,13 @@
   
   function MainService(loaderService){
     var serv = this;
-    serv.test = 'testing';
+
     var filter = {};
     serv.getFilter = getFilter;
     
     var objTodo = {};
     objTodo.elems = [];
+    objTodo.path = "";
     
     serv.setElemsTodo = setElemsTodo;
     serv.setTodoPath = setTodoPath;
@@ -22,6 +23,7 @@
     
     var objMeeting = {};
     objMeeting.elems = [];
+    objMeeting.path = "";
     
     serv.setElemsMeeting = setElemsMeeting;
     serv.setMeetingPath = setMeetingPath;
@@ -29,39 +31,27 @@
     
     var objEvent = {};
     objEvent.elems = [];
+    objEvent.path = "";
     
     serv.setElemsEvent = setElemsEvent;
     serv.setEventPath = setEventPath;
     serv.getObjEvent = getObjEvent;
+
+    var objListDate = {};
+    objListDate.list = [];
     
-    var loadNext = {};
-    loadNext['todo'] = objTodo;
-    loadNext['meeting'] = objMeeting;
-    loadNext['event'] = objEvent;
-    loadNext.text = '';
-    serv.setLoadFile = setLoadFile;
-    serv.getLoadFile = getLoadFile;
+    serv.setListDate = setListDate;
+    serv.getListDate = getListDate;
     
-    serv.setSelectElem = setSelectElem;
-    serv.getSelectElem = getSelectElem;
-    var date = {};
-    date.date = "";
-    function setSelectElem(d){
-      date.date = d;
+    function setListDate(){
+      loaderService.setListDate(objListDate);
     }
-    function getSelectElem(){
-      return date;
+    function getListDate(){
+      return objListDate;
     }
     
     function getFilter(){
       return filter;
-    }
-    
-    function setLoadFile(textObj){
-      loadNext.text = textObj;
-    }
-    function getLoadFile(){
-      return loadNext[loadNext.text];
     }
     
     function setElemsTodo(){
