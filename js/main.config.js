@@ -15,7 +15,7 @@
         url: '/date/{id}', 
         component: 'selectDate',
         resolve: {
-            set: setPaths
+            set: loadFiles
         }
       },
       {
@@ -53,8 +53,10 @@
     $urlRouterProvider.otherwise('/');
   }
 
-  setPaths.$inject = ['mainService', '$stateParams'];
-  function setPaths(mainService, $stateParams){
+  loadFiles.$inject = ['mainService', '$stateParams', '$q'];
+  function loadFiles(mainService, $stateParams, $q){
+    var deferred = $q.defer();
+    
     var id = $stateParams.id;
     if(!mainService.loadFile(id)){
       var listDate = mainService.getListDate().list;
@@ -64,6 +66,16 @@
         }
       }
     }
+    setTimeout(function(){
+      if(mainService.getObjTodo().elems.length !== 0 &&
+         mainService.getObjMeeting().elems.length !== 0 &&
+         mainService.getObjEvent().elems.length !==0){
+         
+          deferred.resolve();
+      }
+      else deferred.reject();
+    },0);
+    return deferred.promise;
   }
   
   getTodo.$inject = ['mainService'];
