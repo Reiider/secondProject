@@ -67,14 +67,18 @@
       }
     }
     setTimeout(function(){
-      if(mainService.getObjTodo().elems.length !== 0 &&
-         mainService.getObjMeeting().elems.length !== 0 &&
-         mainService.getObjEvent().elems.length !==0){
-         
-          deferred.resolve();
+      if(mainService.getObjTodo().error){
+        alert(mainService.getObjTodo().error);
+        deferred.reject();
+      } else if(mainService.getObjMeeting().error){
+        alert(mainService.getObjMeeting().error);
+        deferred.reject();
+      } else if(mainService.getObjEvent().error){
+        alert(mainService.getObjEvent().error);
+        deferred.reject();
       }
-      else deferred.reject();
-    },0);
+      deferred.resolve();
+    },100);
     return deferred.promise;
   }
   

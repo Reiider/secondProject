@@ -41,7 +41,7 @@
             });
           }
         }, function(){
-          alert("error: file with Todo not loaded");
+          obj.error = "error: file with Todo not loaded";
         }
       );
       return obj;
@@ -62,7 +62,7 @@
             });
           }
         }, function(){
-          alert("error: file with Todo not loaded");
+          obj.error = "error: file with Meeting not loaded";
         }
       );
       return obj;
@@ -80,7 +80,7 @@
             });
           }
         }, function(){
-          alert("error: file with Todo not loaded");
+          obj.error = "error: file with Event not loaded";
         }
       );
       return obj;
