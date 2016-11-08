@@ -1,11 +1,24 @@
 # secondProject
-Install npm
+---
+## Structure
+*	/css
+*	/img
+*	/js
+  *  /event
+  *  /meeting
+  *  /server
+  *  /todo
+* /json
 
-Open terminal
+***
+##Install npm
+***
+##Open terminal
 
-Type: 
-  - npm install -g http-server
-  - cd "path to the project"
-  - http-server
+####  Type: 
+  - `npm install -g http-server`
+  - `cd "path to the project"`
+  - `npm install`
+  - `http-server`
   
-  Open your browser and write next address: localhost:8080/
+###Open your browser and write next address: localhost:8080/
