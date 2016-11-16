@@ -15,7 +15,7 @@ import event from './event/event.module.js';
 		meeting.name,
 		event.name
 	]);
-}();
+})();
 
 
 require('./main.config.js');

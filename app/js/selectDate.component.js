@@ -1,14 +1,12 @@
 import angular from 'angular';
 
-const template = require('./selectedDate.html');
-
 (function() {
   'use strict'
   
   angular
   .module('app')
   .component('selectDate', {
-    template,
+    templateUrl: './js/selectedDate.html',
     controller: SelectDate
   });
   

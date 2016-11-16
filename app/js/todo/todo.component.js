@@ -1,14 +1,12 @@
 import angular from 'angular';
 
-const template = require('./templates/todoList.html');
-
 (function() {
   'use strict'
   
   angular
   .module('app.todo')
   .component('todoList', {
-    template,
+    templateUrl: './js/todo/templates/todoList.html',
     controller: TodoList,
     controllerAs: 'Todo',
     bindings:{

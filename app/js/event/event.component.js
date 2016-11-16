@@ -1,14 +1,12 @@
 import angular from 'angular';
 
-const template = require('./templates/eventList.html');
-
 (function() {
   'use strict'
   
   angular
   .module('app.event')
   .component('eventList', {
-    template,
+    templateUrl: './js/event/templates/eventList.html',
     controller: EventList,
     controllerAs: 'Event',
     bindings:{

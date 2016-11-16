@@ -44,59 +44,53 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
-	(function webpackMissingModule() { throw new Error("Cannot find module \"start\""); }());
-
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _angularUiRouter = __webpack_require__(4);
+	var _angularUiRouter = __webpack_require__(3);
 
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 
-	var _serviceModule = __webpack_require__(5);
+	var _serviceModule = __webpack_require__(4);
 
 	var _serviceModule2 = _interopRequireDefault(_serviceModule);
 
-	var _todoModule = __webpack_require__(8);
+	var _todoModule = __webpack_require__(7);
 
 	var _todoModule2 = _interopRequireDefault(_todoModule);
 
-	var _meetingModule = __webpack_require__(13);
+	var _meetingModule = __webpack_require__(12);
 
 	var _meetingModule2 = _interopRequireDefault(_meetingModule);
 
-	var _eventModule = __webpack_require__(18);
+	var _eventModule = __webpack_require__(17);
 
 	var _eventModule2 = _interopRequireDefault(_eventModule);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_angular2.default.module('app', ['ui.router', _serviceModule2.default.name, _todoModule2.default.name, _meetingModule2.default.name, _eventModule2.default.name]);
+	(function () {
+		_angular2.default.module('app', ['ui.router', _serviceModule2.default.name, _todoModule2.default.name, _meetingModule2.default.name, _eventModule2.default.name]);
+	})();
 
+	__webpack_require__(22);
 	__webpack_require__(23);
 	__webpack_require__(24);
 	__webpack_require__(25);
-	__webpack_require__(26);
 
 /***/ },
-/* 2 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(3);
+	__webpack_require__(2);
 	module.exports = angular;
 
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 	/**
@@ -31869,7 +31863,7 @@
 	!window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*!
@@ -31880,7 +31874,7 @@
 	 */
 	(function webpackUniversalModuleDefinition(root, factory) {
 		if(true)
-			module.exports = factory(__webpack_require__(2));
+			module.exports = factory(__webpack_require__(1));
 		else if(typeof define === 'function' && define.amd)
 			define("angular-ui-router", ["angular"], factory);
 		else if(typeof exports === 'object')
@@ -40218,7 +40212,7 @@
 	//# sourceMappingURL=angular-ui-router.js.map
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40227,7 +40221,7 @@
 	  value: true
 	});
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40236,16 +40230,16 @@
 	exports.default = _angular2.default.module('app.service', []);
 
 
+	__webpack_require__(5);
 	__webpack_require__(6);
-	__webpack_require__(7);
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40336,12 +40330,12 @@
 	})();
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40443,7 +40437,7 @@
 	})();
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40452,7 +40446,7 @@
 	  value: true
 	});
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40461,18 +40455,18 @@
 	exports.default = _angular2.default.module('app.todo', []);
 
 
+	__webpack_require__(8);
 	__webpack_require__(9);
 	__webpack_require__(10);
 	__webpack_require__(11);
-	__webpack_require__(12);
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40482,7 +40476,7 @@
 	  'use strict';
 
 	  _angular2.default.module('app.todo').component('todoList', {
-	    templateUrl: 'js/todo/templates/todoList.html',
+	    templateUrl: './js/todo/templates/todoList.html',
 	    controller: TodoList,
 	    controllerAs: 'Todo',
 	    bindings: {
@@ -40520,12 +40514,12 @@
 	})();
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40557,12 +40551,12 @@
 	})();
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40585,12 +40579,12 @@
 	})();
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40612,7 +40606,7 @@
 	})();
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40621,7 +40615,7 @@
 	  value: true
 	});
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40630,18 +40624,18 @@
 	exports.default = _angular2.default.module('app.meeting', []);
 
 
+	__webpack_require__(13);
 	__webpack_require__(14);
 	__webpack_require__(15);
 	__webpack_require__(16);
-	__webpack_require__(17);
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40651,7 +40645,7 @@
 	  'use strict';
 
 	  _angular2.default.module('app.meeting').component('meetingList', {
-	    templateUrl: 'js/meeting/templates/meetingList.html',
+	    templateUrl: './js/meeting/templates/meetingList.html',
 	    controller: MeetingList,
 	    controllerAs: 'Meeting',
 	    bindings: {
@@ -40690,12 +40684,12 @@
 	})();
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40729,12 +40723,12 @@
 	})();
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40757,12 +40751,12 @@
 	})();
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40784,7 +40778,7 @@
 	})();
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40793,7 +40787,7 @@
 	  value: true
 	});
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40802,18 +40796,18 @@
 	exports.default = _angular2.default.module('app.event', []);
 
 
+	__webpack_require__(18);
 	__webpack_require__(19);
 	__webpack_require__(20);
 	__webpack_require__(21);
-	__webpack_require__(22);
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40823,7 +40817,7 @@
 	  'use strict';
 
 	  _angular2.default.module('app.event').component('eventList', {
-	    templateUrl: 'js/event/templates/eventList.html',
+	    templateUrl: './js/event/templates/eventList.html',
 	    controller: EventList,
 	    controllerAs: 'Event',
 	    bindings: {
@@ -40859,12 +40853,12 @@
 	})();
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40896,12 +40890,12 @@
 	})();
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40924,12 +40918,12 @@
 	})();
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -40951,12 +40945,12 @@
 	})();
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -41061,12 +41055,12 @@
 	})();
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -41076,7 +41070,7 @@
 	  'use strict';
 
 	  _angular2.default.module('app').component('selectDate', {
-	    templateUrl: 'js/selectedDate.html',
+	    templateUrl: './js/selectedDate.html',
 	    controller: SelectDate
 	  });
 
@@ -41086,12 +41080,12 @@
 	})();
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
@@ -41111,12 +41105,12 @@
 	})();
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(2);
+	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
