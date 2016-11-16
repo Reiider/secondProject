@@ -1,31 +1,36 @@
+import angular from 'angular';
+
+const template = require('./templates/meetingList.html');
+
 (function() {
   'use strict'
   
   angular
-  .module('app.todo')
-  .component('todoList', {
-    templateUrl:'js/todo/templates/todoList.html',
-    controller: TodoList,
-    controllerAs: 'Todo',
+  .module('app.meeting')
+  .component('meetingList', {
+    template,
+    controller: MeetingList,
+    controllerAs: 'Meeting',
     bindings:{
       object:'<',
       filter:'<'
     }
   });
   
-  function TodoList(){
+  function MeetingList(){
     var vm = this;
     
     vm.add = add;
     vm.deleteSelectTodos = deleteSelectTodos;
     
-    function add(text){
-      if(text != ""){
+    function add(text, time){
+      if(text != "" && time != ""){
         vm.object.elems.push({
           select: false, 
           text: text,
           complete: false,
-          optional: false
+          optional: false,
+          time: time
         })
       }
     }

@@ -1,11 +1,13 @@
+import angular from 'angular';
+
 (function(){
   'use strict'
   
   angular
-  .module('app.todo')
-  .component('todoAdd', {
-    templateUrl: 'js/todo/templates/add.html',
-    controller: TodoAdd,
+  .module('app.event')
+  .component('eventAdd', {
+    templateUrl: 'js/event/templates/add.html',
+    controller: EventAdd,
     controllerAs: 'Add',
     bindings:{
       text:'<',
@@ -13,14 +15,14 @@
     }
   });
   
-  function TodoAdd(){
+  function EventAdd(){
     var vm = this;
     vm.text = "";
     
     vm.addElem = addElem;
     
     function addElem(){
-      vm.add({text: vm.text});
+      vm.add({value: vm.text});
     }
   }
   
