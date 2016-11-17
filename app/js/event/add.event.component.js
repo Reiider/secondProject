@@ -2,7 +2,18 @@ import angular from 'angular';
 
 (function(){
   'use strict'
-  
+
+  class EventAdd{
+    constructor(){
+      this.text = ""; 
+    }
+    
+    addElem(){
+      this.add({value: this.text});
+      this.text = ""; 
+    }
+  }
+
   angular
   .module('app.event')
   .component('eventAdd', {
@@ -14,16 +25,5 @@ import angular from 'angular';
       add:'&'      
     }
   });
-  
-  function EventAdd(){
-    var vm = this;
-    vm.text = "";
-    
-    vm.addElem = addElem;
-    
-    function addElem(){
-      vm.add({value: vm.text});
-    }
-  }
-  
+
 })();

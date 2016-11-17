@@ -3,98 +3,86 @@ import angular from 'angular';
 (function(){
   'use strict'
   
-  angular
-  .module('app.service')
-  .service('mainService', MainService);
-  
-  MainService.$inject = ['loaderService'];
-  
-  function MainService(loaderService){
-    var serv = this;
+  class MainService{
+    static get $inject(){ return ['loaderService']; };
 
-    var filter = {};
-    serv.getFilter = getFilter;
-    
-    var massObject = {};
-    serv.loadFile = loadFile;
-    serv.newLoadFile = newLoadFile;
-    
-    var objTodo = {};
-    objTodo.elems = [];
-    
-    serv.setElemsTodo = setElemsTodo;
-    serv.getObjTodo = getObjTodo;
-    
-    var objMeeting = {};
-    objMeeting.elems = [];
-    
-    serv.setElemsMeeting = setElemsMeeting;
-    serv.getObjMeeting = getObjMeeting;
-    
-    var objEvent = {};
-    objEvent.elems = [];
-    
-    serv.setElemsEvent = setElemsEvent;
-    serv.getObjEvent = getObjEvent;
+    constructor(loaderService){
+      this.loaderService = loaderService;  
 
-    var objListDate = {};
-    objListDate.list = [];
+      this.filter = {};
+      
+      this.massObject = {};
+      
+      this.objTodo = {};
+      this.objTodo.elems = [];
+      
+      this.objMeeting = {};
+      this.objMeeting.elems = [];
+      
+      this.objEvent = {};
+      this.objEvent.elems = [];
+
+      this.objListDate = {};
+      this.objListDate.list = [];
+    }
     
-    serv.setListDate = setListDate;
-    serv.getListDate = getListDate;
     
-    function loadFile(date){
-      if(massObject[date]){
-        objTodo = massObject[date].todo;
-        objMeeting = massObject[date].meeting;
-        objEvent = massObject[date].event;
+    loadFile(date){
+      if(this.massObject[date]){
+        this.objTodo = this.massObject[date].todo;
+        this.objMeeting = this.massObject[date].meeting;
+        this.objEvent = this.massObject[date].event;
         return true;
       }
       else return false;
     }
-    function newLoadFile(elem){
-      massObject[elem.date] = {};
+    newLoadFile(elem){
+      this.massObject[elem.date] = {};
       
-      setElemsTodo(elem.paths.todo);
-      setElemsMeeting(elem.paths.meeting);
-      setElemsEvent(elem.paths.event);
+      this.setElemsTodo(elem.paths.todo);
+      this.setElemsMeeting(elem.paths.meeting);
+      this.setElemsEvent(elem.paths.event);
       
-      massObject[elem.date].todo = objTodo;
-      massObject[elem.date].meeting = objMeeting;
-      massObject[elem.date].event = objEvent;
+      this.massObject[elem.date].todo = this.objTodo;
+      this.massObject[elem.date].meeting = this.objMeeting;
+      this.massObject[elem.date].event = this.objEvent;
     }
     
-    function setListDate(){
-      objListDate = loaderService.setListDate();
+    setListDate(){
+      this.objListDate = this.loaderService.setListDate();
     }
-    function getListDate(){
-      return objListDate;
-    }
-    
-    function getFilter(){
-      return filter;
+    getListDate(){
+      return this.objListDate;
     }
     
-    function setElemsTodo(path){
-      objTodo = loaderService.setTodo(path);
-    }
-    function getObjTodo(){
-      return objTodo;
+    getFilter(){
+      return this.filter;
     }
     
-    function setElemsMeeting(path){
-      objMeeting = loaderService.setMeeting(path);
+    setElemsTodo(path){
+      this.objTodo = this.loaderService.setTodo(path);
     }
-    function getObjMeeting(){
-      return objMeeting;
+    getObjTodo(){
+      return this.objTodo;
     }
     
-    function setElemsEvent(path){
-      objEvent = loaderService.setEvent(path);
+    setElemsMeeting(path){
+      this.objMeeting = this.loaderService.setMeeting(path);
     }
-    function getObjEvent(){
-      return objEvent;
+    getObjMeeting(){
+      return this.objMeeting;
+    }
+    
+    setElemsEvent(path){
+      this.objEvent = this.loaderService.setEvent(path);
+    }
+    getObjEvent(){
+      return this.objEvent;
     }
   }
+
+  angular
+  .module('app.service')
+  .service('mainService', MainService);
 
 })();

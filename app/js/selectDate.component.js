@@ -1,19 +1,13 @@
 import angular from 'angular';
 
 (function() {
+
   'use strict'
-  
+
   angular
   .module('app')
   .component('selectDate', {
-    templateUrl: './js/selectedDate.html',
-    controller: SelectDate
+    templateUrl: './js/selectedDate.html'
   });
-  
-  SelectDate.$inject = ['mainService'];
-  
-  function SelectDate(mainService){
-    
-  }
 
 })();

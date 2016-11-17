@@ -1,17 +1,15 @@
 import angular from 'angular';
 
-(function() {
-  'use strict'
-  
-  angular
-  .module('app')
-  .controller('FilterController', FilterController);
-  
-  FilterController.$inject = ['mainService'];
-  
-  function FilterController(mainService){
-    var vm = this;
-    vm.filter = mainService.getFilter();
-  }
+'use strict'
 
-})();
+class FilterController{
+	static get $inject(){ return ['mainService']; };
+	
+  constructor(mainService){
+  	this.filter = mainService.getFilter();
+  }
+}
+
+angular
+.module('app')
+.controller('FilterController', FilterController);

@@ -3,6 +3,31 @@ import angular from 'angular';
 (function() {
   'use strict'
   
+  class EventList{
+    constructor(){
+
+    }
+    
+    add(text){
+      if(text != ""){
+        this.object.elems.push({
+          select: false, 
+          text: text
+        })
+      }
+    }
+    
+    deleteSelectTodos(){
+      var elems = this.object.elems;
+      for(var i = 0; i < elems.length;){
+        if(elems[i].select){
+          elems.splice(i,1);
+        }
+        else i++;
+      }
+    }
+  }
+
   angular
   .module('app.event')
   .component('eventList', {
@@ -14,31 +39,5 @@ import angular from 'angular';
       filter:'<'
     }
   });
-  
-  function EventList(){
-    var vm = this;
-    
-    vm.add = add;
-    vm.deleteSelectTodos = deleteSelectTodos;
-    
-    function add(text){
-      if(text != ""){
-        vm.object.elems.push({
-          select: false, 
-          text: text
-        })
-      }
-    }
-    
-    function deleteSelectTodos(){
-      var elems = vm.object.elems;
-      for(var i = 0; i < elems.length;){
-        if(elems[i].select){
-          elems.splice(i,1);
-        }
-        else i++;
-      }
-    }
-  }
 
 })();

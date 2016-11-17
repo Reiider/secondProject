@@ -2,7 +2,18 @@ import angular from 'angular';
 
 (function(){
   'use strict'
-  
+
+  class TodoAdd{
+    constructor(){
+      this.text = "";  
+    }
+
+    addElem(){
+      this.add({text: this.text});
+      this.text = "";
+    }
+  }
+
   angular
   .module('app.todo')
   .component('todoAdd', {
@@ -14,16 +25,5 @@ import angular from 'angular';
       add:'&'      
     }
   });
-  
-  function TodoAdd(){
-    var vm = this;
-    vm.text = "";
-    
-    vm.addElem = addElem;
-    
-    function addElem(){
-      vm.add({text: vm.text});
-    }
-  }
-  
+
 })();

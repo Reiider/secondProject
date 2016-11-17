@@ -2,7 +2,20 @@ import angular from 'angular';
 
 (function(){
   'use strict'
-  
+ 
+  class MeetingAdd{
+    constructor(){
+      this.text = "";
+      this.time = "";
+    }
+    
+    addElem(){
+      this.add({text: this.text, time: this.time});
+      this.text = "";
+      this.time = "";
+    }
+  }
+
   angular
   .module('app.meeting')
   .component('meetingAdd', {
@@ -15,17 +28,5 @@ import angular from 'angular';
       add:'&'      
     }
   });
-  
-  function MeetingAdd(){
-    var vm = this;
-    vm.text = "";
-    vm.time = "";
-    
-    vm.addElem = addElem;
-    
-    function addElem(){
-      vm.add({text: vm.text, time: vm.time});
-    }
-  }
   
 })();

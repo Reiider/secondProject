@@ -1,22 +1,20 @@
 import angular from 'angular';
 
-(function() {
-  'use strict'
-  
-  angular
-  .module('app')
-  .controller('MainController', MainController);
-  
-  MainController.$inject = ['mainService'];
-  
-  function MainController(mainService){
-    var vm = this;
-    vm.obj = {};
-    vm.obj.list = [];
+'use strict'
+
+class MainController{
+  static get $inject(){ return ['mainService']; };
+
+  constructor(mainService){
+    this.obj = {};
+    this.obj.list = [];
     
     mainService.setListDate();
     
-    vm.obj = mainService.getListDate();  
-  }
+    this.obj = mainService.getListDate();
+  }    
+}
 
-})();
+angular
+.module('app')
+.controller('MainController', MainController);
