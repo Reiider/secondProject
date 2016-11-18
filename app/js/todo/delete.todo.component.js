@@ -1,16 +1,11 @@
-import angular from 'angular';
+var template = require('html!./templates/delete.html');
 
-(function(){
-  'use strict'
-  
-  angular
-  .module('app.todo')
-  .component('todoDelete', {
-    templateUrl: 'js/todo/templates/delete.html',
-    controllerAs: 'Delete',
-    bindings:{
-      del:'&'
-    }
-  });
-  
-})();
+'use strict'
+
+export default {
+  template,
+  controllerAs: 'Delete',
+  bindings:{
+    del:'&'
+  }
+};

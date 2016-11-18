@@ -1,17 +1,12 @@
-import angular from 'angular';
+var template = require('html!./templates/view.html');
 
-(function(){
-  'use strict'
-  
-  angular
-  .module('app.meeting')
-  .component('meetingView', {
-    templateUrl: 'js/meeting/templates/view.html',
-    controllerAs: 'View',
-    bindings:{
-      object:'<',
-      filter:'<'
-    }
-  });
-  
-})();
+'use strict'
+
+export default {
+  template,
+  controllerAs: 'View',
+  bindings:{
+    object:'<',
+    filter:'<'
+  }
+};

@@ -1,8 +1,13 @@
 import angular from 'angular';
 
-export default angular.module('app.todo', []);
+import todoList from './todo.component.js';
+import todoAdd from './add.todo.component.js';
+import todoView from './view.todo.component.js';
+import todoDelete from './delete.todo.component.js';
 
-require('./todo.component.js');
-require('./add.todo.component.js');
-require('./view.todo.component.js');
-require('./delete.todo.component.js');
+export default angular
+	.module('app.todo', [])
+		.component('todoList', todoList)
+		.component('todoAdd', todoAdd)
+		.component('todoView', todoView)
+		.component('todoDelete', todoDelete);

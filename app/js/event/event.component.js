@@ -1,43 +1,38 @@
-import angular from 'angular';
+var template = require('html!./templates/eventList.html');
 
-(function() {
-  'use strict'
+'use strict'
+
+class EventList{
+  constructor(){
+
+  }
   
-  class EventList{
-    constructor(){
-
-    }
-    
-    add(text){
-      if(text != ""){
-        this.object.elems.push({
-          select: false, 
-          text: text
-        })
-      }
-    }
-    
-    deleteSelectTodos(){
-      var elems = this.object.elems;
-      for(var i = 0; i < elems.length;){
-        if(elems[i].select){
-          elems.splice(i,1);
-        }
-        else i++;
-      }
+  add(text){
+    if(text != ""){
+      this.object.elems.push({
+        select: false, 
+        text: text
+      })
     }
   }
-
-  angular
-  .module('app.event')
-  .component('eventList', {
-    templateUrl: './js/event/templates/eventList.html',
-    controller: EventList,
-    controllerAs: 'Event',
-    bindings:{
-      object:'<',
-      filter:'<'
+  
+  deleteSelectTodos(){
+    var elems = this.object.elems;
+    for(var i = 0; i < elems.length;){
+      if(elems[i].select){
+        elems.splice(i,1);
+      }
+      else i++;
     }
-  });
+  }
+}
 
-})();
+export default {
+  template,
+  controller: EventList,
+  controllerAs: 'Event',
+  bindings:{
+    object:'<',
+    filter:'<'
+  }
+};

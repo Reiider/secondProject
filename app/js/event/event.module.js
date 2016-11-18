@@ -1,8 +1,13 @@
 import angular from 'angular';
-  
-export default angular.module('app.event', []);
 
-require('./event.component.js');
-require('./add.event.component.js');
-require('./view.event.component.js');
-require('./delete.event.component.js');
+import eventList from './event.component.js';
+import eventAdd from './add.event.component.js';
+import eventView from './view.event.component.js';
+import eventDelete from './delete.event.component.js';
+
+export default angular
+	.module('app.event', [])
+		.component('eventList', eventList)
+		.component('eventAdd', eventAdd)
+		.component('eventView', eventView)
+		.component('eventDelete', eventDelete);

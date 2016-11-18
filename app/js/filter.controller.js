@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 'use strict'
 
 class FilterController{
@@ -10,6 +8,4 @@ class FilterController{
   }
 }
 
-angular
-.module('app')
-.controller('FilterController', FilterController);
+export default FilterController;

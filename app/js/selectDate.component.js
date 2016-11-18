@@ -1,13 +1,7 @@
-import angular from 'angular';
+var template = require('html!./selectedDate.html');
 
-(function() {
+'use strict'
 
-  'use strict'
-
-  angular
-  .module('app')
-  .component('selectDate', {
-    templateUrl: './js/selectedDate.html'
-  });
-
-})();
+export default {
+	  template
+	};

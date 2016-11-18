@@ -1,47 +1,40 @@
-import angular from 'angular';
+var template = require('html!./templates/todoList.html');
 
-(function() {
-  'use strict'
+'use strict'
+
+class TodoList{
+  constructor(){
+
+  }
   
-  class TodoList{
-    constructor(){
-
-    }
-    
-    add(text){
-      if(text != ""){
-        this.object.elems.push({
-          select: false, 
-          text: text,
-          complete: false,
-          optional: false
-        })
-      }
-    }
-    
-    deleteSelectTodos(){
-      var elems = this.object.elems;
-      for(var i = 0; i < elems.length;){
-        if(elems[i].select){
-          elems.splice(i,1);
-        }
-        else i++;
-      }
+  add(text){
+    if(text != ""){
+      this.object.elems.push({
+        select: false, 
+        text: text,
+        complete: false,
+        optional: false
+      })
     }
   }
-
-  angular
-  .module('app.todo')
-  .component('todoList', {
-    templateUrl: './js/todo/templates/todoList.html',
-    controller: TodoList,
-    controllerAs: 'Todo',
-    bindings:{
-      object:'<',
-      filter:'<'
-    }
-  });
   
+  deleteSelectTodos(){
+    var elems = this.object.elems;
+    for(var i = 0; i < elems.length;){
+      if(elems[i].select){
+        elems.splice(i,1);
+      }
+      else i++;
+    }
+  }
+}
 
-
-})();
+export default {
+  template,
+  controller: TodoList,
+  controllerAs: 'Todo',
+  bindings:{
+    object:'<',
+    filter:'<'
+  }
+};

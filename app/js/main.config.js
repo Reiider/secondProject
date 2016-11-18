@@ -1,15 +1,15 @@
-import angular from 'angular';
+'use strict';
 
-(function() {
-  'use strict';
-  
-  angular
-  .module('app')
-  .config(configure);
-  
-  configure.$ingect = ['$stateProvider', '$urlRouterProvider'];
-  
-  function configure($stateProvider, $urlRouterProvider) {   
+class Configure {   
+  static get $inject(){ return ['$stateProvider', '$urlRouterProvider']; };
+
+  constructor($stateProvider, $urlRouterProvider){
+    this.loadFiles.$inject = ['mainService', '$stateParams', '$q'];
+    this.getTodo.$inject = ['mainService'];
+    this.getMeeting.$inject = ['mainService'];
+    this.getEvent.$inject = ['mainService'];
+    this.getFilter.$inject = ['mainService'];
+    
     var states = [
       {
         abstract: true,
@@ -17,7 +17,7 @@ import angular from 'angular';
         url: '/date/{id}', 
         component: 'selectDate',
         resolve: {
-            set: loadFiles
+            set: this.loadFiles
         }
       },
       {
@@ -25,8 +25,8 @@ import angular from 'angular';
         component: 'todoList',
         url: '/todo',
         resolve:{
-          object: getTodo,
-          filter: getFilter
+          object: this.getTodo,
+          filter: this.getFilter
         }
       },
       {
@@ -34,8 +34,8 @@ import angular from 'angular';
         component: 'meetingList',
         url: '/meeting',
         resolve:{
-          object: getMeeting,
-          filter: getFilter
+          object: this.getMeeting,
+          filter: this.getFilter
         }
       },
       {
@@ -43,8 +43,8 @@ import angular from 'angular';
         component: 'eventList',
         url: '/event',
         resolve:{
-          object: getEvent,
-          filter: getFilter
+          object: this.getEvent,
+          filter: this.getFilter
         }
       }
     ];
@@ -55,8 +55,7 @@ import angular from 'angular';
     $urlRouterProvider.otherwise('/');
   }
 
-  loadFiles.$inject = ['mainService', '$stateParams', '$q'];
-  function loadFiles(mainService, $stateParams, $q){
+  loadFiles(mainService, $stateParams, $q){
     var deferred = $q.defer();
     
     var id = $stateParams.id;
@@ -83,25 +82,30 @@ import angular from 'angular';
     },100);
     return deferred.promise;
   }
-  
-  getTodo.$inject = ['mainService'];
-  function getTodo(mainService){
+
+  getTodo(mainService){
     return mainService.getObjTodo();
   }
-  
-  getMeeting.$inject = ['mainService'];
-  function getMeeting(mainService){
+
+  getMeeting(mainService){
     return mainService.getObjMeeting();
   }
-  
-  getEvent.$inject = ['mainService'];
-  function getEvent(mainService){
+
+  getEvent(mainService){
     return mainService.getObjEvent();
   }
-  
-  getFilter.$inject = ['mainService'];
-  function getFilter(mainService){
+
+  getFilter(mainService){
     return mainService.getFilter();
   }
-  
-})();
+
+  static factory(){
+    const func = function($stateProvider, $urlRouterProvider){
+      return new Configure($stateProvider, $urlRouterProvider);
+    }
+    func.$inject = ['$stateProvider', '$urlRouterProvider'];
+    return func;
+  } 
+}
+
+export default Configure.factory();

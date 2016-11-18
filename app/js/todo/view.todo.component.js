@@ -1,17 +1,12 @@
-import angular from 'angular';
+var template = require('html!./templates/view.html');
 
-(function(){
-  'use strict'
+'use strict'
   
-  angular
-  .module('app.todo')
-  .component('todoView', {
-    templateUrl: 'js/todo/templates/view.html',
-    controllerAs: 'View',
-    bindings:{
-      object:'<',
-      filter:'<'
-    }
-  });
-  
-})();
+export default {
+  template,
+  controllerAs: 'View',
+  bindings:{
+    object:'<',
+    filter:'<'
+  }
+};

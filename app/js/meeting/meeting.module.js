@@ -1,8 +1,13 @@
 import angular from 'angular';
 
-export default angular.module('app.meeting', []);
+import meetingList from './meeting.component.js';
+import meetingAdd from './add.meeting.component.js';
+import meetingView from './view.meeting.component.js';
+import meetingDelete from './delete.meeting.component.js';
 
-require('./meeting.component.js');
-require('./add.meeting.component.js');
-require('./view.meeting.component.js');
-require('./delete.meeting.component.js');
+export default angular
+	.module('app.meeting', [])
+		.component('meetingList', meetingList)
+		.component('meetingAdd', meetingAdd)
+		.component('meetingView', meetingView)
+		.component('meetingDelete', meetingDelete);

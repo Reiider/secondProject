@@ -62,24 +62,36 @@
 
 	var _todoModule2 = _interopRequireDefault(_todoModule);
 
-	var _meetingModule = __webpack_require__(12);
+	var _meetingModule = __webpack_require__(16);
 
 	var _meetingModule2 = _interopRequireDefault(_meetingModule);
 
-	var _eventModule = __webpack_require__(17);
+	var _eventModule = __webpack_require__(25);
 
 	var _eventModule2 = _interopRequireDefault(_eventModule);
+
+	var _mainConfig = __webpack_require__(34);
+
+	var _mainConfig2 = _interopRequireDefault(_mainConfig);
+
+	var _selectDateComponent = __webpack_require__(35);
+
+	var _selectDateComponent2 = _interopRequireDefault(_selectDateComponent);
+
+	var _filterController = __webpack_require__(37);
+
+	var _filterController2 = _interopRequireDefault(_filterController);
+
+	var _mainController = __webpack_require__(38);
+
+	var _mainController2 = _interopRequireDefault(_mainController);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	(function () {
-		_angular2.default.module('app', ['ui.router', _serviceModule2.default.name, _todoModule2.default.name, _meetingModule2.default.name, _eventModule2.default.name]);
-	})();
 
-	__webpack_require__(22);
-	__webpack_require__(23);
-	__webpack_require__(24);
-	__webpack_require__(25);
+		_angular2.default.module('app', ['ui.router', _serviceModule2.default.name, _todoModule2.default.name, _meetingModule2.default.name, _eventModule2.default.name]).config(_mainConfig2.default).controller('FilterController', _filterController2.default).controller('MainController', _mainController2.default).component('selectDate', _selectDateComponent2.default);
+	})();
 
 /***/ },
 /* 1 */
@@ -40218,257 +40230,249 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
+	var _loaderService = __webpack_require__(5);
+
+	var _loaderService2 = _interopRequireDefault(_loaderService);
+
+	var _mainService = __webpack_require__(6);
+
+	var _mainService2 = _interopRequireDefault(_mainService);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _angular2.default.module('app.service', []);
-
-
-	__webpack_require__(5);
-	__webpack_require__(6);
+	exports.default = _angular2.default.module('app.service', []).service('loaderService', _loaderService2.default).service('mainService', _mainService2.default);
 
 /***/ },
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	  'use strict';
-
-	  var LoaderService = function () {
-	    _createClass(LoaderService, null, [{
-	      key: '$inject',
-	      get: function get() {
-	        return ['$http'];
-	      }
-	    }]);
-
-	    function LoaderService($http) {
-	      _classCallCheck(this, LoaderService);
-
-	      this.$http = $http;
+	var LoaderService = function () {
+	  _createClass(LoaderService, null, [{
+	    key: '$inject',
+	    get: function get() {
+	      return ['$http'];
 	    }
+	  }]);
 
-	    _createClass(LoaderService, [{
-	      key: 'setListDate',
-	      value: function setListDate() {
-	        var obj = {};
-	        obj.list = [];
-	        this.$http.get("json/listDate.json").then(function (res) {
-	          obj.list = res.data;
-	        }, function () {
-	          alert("error: file with dates not loaded");
-	        });
-	        return obj;
-	      }
-	    }, {
-	      key: 'setTodo',
-	      value: function setTodo(path) {
-	        var obj = {};
-	        obj.elems = [];
-	        this.$http.get(path).then(function (res) {
-	          var elements = res.data;
-	          for (var i = 0; i < elements.length; i++) {
-	            obj.elems.push({
-	              select: false,
-	              text: elements[i],
-	              complete: false,
-	              optional: false
-	            });
-	          }
-	        }, function () {
-	          obj.error = "error: file with Todo not loaded";
-	        });
-	        return obj;
-	      }
-	    }, {
-	      key: 'setMeeting',
-	      value: function setMeeting(path) {
-	        var obj = {};
-	        obj.elems = [];
-	        this.$http.get(path).then(function (res) {
-	          var elements = res.data;
-	          for (var i = 0; i < elements.length; i++) {
-	            obj.elems.push({
-	              select: false,
-	              text: elements[i].text,
-	              complete: false,
-	              optional: false,
-	              time: elements[i].time
-	            });
-	          }
-	        }, function () {
-	          obj.error = "error: file with Meeting not loaded";
-	        });
-	        return obj;
-	      }
-	    }, {
-	      key: 'setEvent',
-	      value: function setEvent(path) {
-	        var obj = {};
-	        obj.elems = [];
-	        this.$http.get(path).then(function (res) {
-	          var elements = res.data;
-	          for (var i = 0; i < elements.length; i++) {
-	            obj.elems.push({
-	              select: false,
-	              text: elements[i]
-	            });
-	          }
-	        }, function () {
-	          obj.error = "error: file with Event not loaded";
-	        });
-	        return obj;
-	      }
-	    }]);
+	  function LoaderService($http) {
+	    _classCallCheck(this, LoaderService);
 
-	    return LoaderService;
-	  }();
+	    this.$http = $http;
+	  }
 
-	  _angular2.default.module('app.service').service('loaderService', LoaderService);
-	})();
+	  _createClass(LoaderService, [{
+	    key: 'setListDate',
+	    value: function setListDate() {
+	      var obj = {};
+	      obj.list = [];
+	      this.$http.get("json/listDate.json").then(function (res) {
+	        obj.list = res.data;
+	      }, function () {
+	        alert("error: file with dates not loaded");
+	      });
+	      return obj;
+	    }
+	  }, {
+	    key: 'setTodo',
+	    value: function setTodo(path) {
+	      var obj = {};
+	      obj.elems = [];
+	      this.$http.get(path).then(function (res) {
+	        var elements = res.data;
+	        for (var i = 0; i < elements.length; i++) {
+	          obj.elems.push({
+	            select: false,
+	            text: elements[i],
+	            complete: false,
+	            optional: false
+	          });
+	        }
+	      }, function () {
+	        obj.error = "error: file with Todo not loaded";
+	      });
+	      return obj;
+	    }
+	  }, {
+	    key: 'setMeeting',
+	    value: function setMeeting(path) {
+	      var obj = {};
+	      obj.elems = [];
+	      this.$http.get(path).then(function (res) {
+	        var elements = res.data;
+	        for (var i = 0; i < elements.length; i++) {
+	          obj.elems.push({
+	            select: false,
+	            text: elements[i].text,
+	            complete: false,
+	            optional: false,
+	            time: elements[i].time
+	          });
+	        }
+	      }, function () {
+	        obj.error = "error: file with Meeting not loaded";
+	      });
+	      return obj;
+	    }
+	  }, {
+	    key: 'setEvent',
+	    value: function setEvent(path) {
+	      var obj = {};
+	      obj.elems = [];
+	      this.$http.get(path).then(function (res) {
+	        var elements = res.data;
+	        for (var i = 0; i < elements.length; i++) {
+	          obj.elems.push({
+	            select: false,
+	            text: elements[i]
+	          });
+	        }
+	      }, function () {
+	        obj.error = "error: file with Event not loaded";
+	      });
+	      return obj;
+	    }
+	  }]);
+
+	  return LoaderService;
+	}();
+
+	exports.default = LoaderService;
 
 /***/ },
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	  'use strict';
-
-	  var MainService = function () {
-	    _createClass(MainService, null, [{
-	      key: '$inject',
-	      get: function get() {
-	        return ['loaderService'];
-	      }
-	    }]);
-
-	    function MainService(loaderService) {
-	      _classCallCheck(this, MainService);
-
-	      this.loaderService = loaderService;
-
-	      this.filter = {};
-
-	      this.massObject = {};
-
-	      this.objTodo = {};
-	      this.objTodo.elems = [];
-
-	      this.objMeeting = {};
-	      this.objMeeting.elems = [];
-
-	      this.objEvent = {};
-	      this.objEvent.elems = [];
-
-	      this.objListDate = {};
-	      this.objListDate.list = [];
+	var MainService = function () {
+	  _createClass(MainService, null, [{
+	    key: '$inject',
+	    get: function get() {
+	      return ['loaderService'];
 	    }
+	  }]);
 
-	    _createClass(MainService, [{
-	      key: 'loadFile',
-	      value: function loadFile(date) {
-	        if (this.massObject[date]) {
-	          this.objTodo = this.massObject[date].todo;
-	          this.objMeeting = this.massObject[date].meeting;
-	          this.objEvent = this.massObject[date].event;
-	          return true;
-	        } else return false;
-	      }
-	    }, {
-	      key: 'newLoadFile',
-	      value: function newLoadFile(elem) {
-	        this.massObject[elem.date] = {};
+	  function MainService(loaderService) {
+	    _classCallCheck(this, MainService);
 
-	        this.setElemsTodo(elem.paths.todo);
-	        this.setElemsMeeting(elem.paths.meeting);
-	        this.setElemsEvent(elem.paths.event);
+	    this.loaderService = loaderService;
 
-	        this.massObject[elem.date].todo = this.objTodo;
-	        this.massObject[elem.date].meeting = this.objMeeting;
-	        this.massObject[elem.date].event = this.objEvent;
-	      }
-	    }, {
-	      key: 'setListDate',
-	      value: function setListDate() {
-	        this.objListDate = this.loaderService.setListDate();
-	      }
-	    }, {
-	      key: 'getListDate',
-	      value: function getListDate() {
-	        return this.objListDate;
-	      }
-	    }, {
-	      key: 'getFilter',
-	      value: function getFilter() {
-	        return this.filter;
-	      }
-	    }, {
-	      key: 'setElemsTodo',
-	      value: function setElemsTodo(path) {
-	        this.objTodo = this.loaderService.setTodo(path);
-	      }
-	    }, {
-	      key: 'getObjTodo',
-	      value: function getObjTodo() {
-	        return this.objTodo;
-	      }
-	    }, {
-	      key: 'setElemsMeeting',
-	      value: function setElemsMeeting(path) {
-	        this.objMeeting = this.loaderService.setMeeting(path);
-	      }
-	    }, {
-	      key: 'getObjMeeting',
-	      value: function getObjMeeting() {
-	        return this.objMeeting;
-	      }
-	    }, {
-	      key: 'setElemsEvent',
-	      value: function setElemsEvent(path) {
-	        this.objEvent = this.loaderService.setEvent(path);
-	      }
-	    }, {
-	      key: 'getObjEvent',
-	      value: function getObjEvent() {
-	        return this.objEvent;
-	      }
-	    }]);
+	    this.filter = {};
 
-	    return MainService;
-	  }();
+	    this.massObject = {};
 
-	  _angular2.default.module('app.service').service('mainService', MainService);
-	})();
+	    this.objTodo = {};
+	    this.objTodo.elems = [];
+
+	    this.objMeeting = {};
+	    this.objMeeting.elems = [];
+
+	    this.objEvent = {};
+	    this.objEvent.elems = [];
+
+	    this.objListDate = {};
+	    this.objListDate.list = [];
+	  }
+
+	  _createClass(MainService, [{
+	    key: 'loadFile',
+	    value: function loadFile(date) {
+	      if (this.massObject[date]) {
+	        this.objTodo = this.massObject[date].todo;
+	        this.objMeeting = this.massObject[date].meeting;
+	        this.objEvent = this.massObject[date].event;
+	        return true;
+	      } else return false;
+	    }
+	  }, {
+	    key: 'newLoadFile',
+	    value: function newLoadFile(elem) {
+	      this.massObject[elem.date] = {};
+
+	      this.setElemsTodo(elem.paths.todo);
+	      this.setElemsMeeting(elem.paths.meeting);
+	      this.setElemsEvent(elem.paths.event);
+
+	      this.massObject[elem.date].todo = this.objTodo;
+	      this.massObject[elem.date].meeting = this.objMeeting;
+	      this.massObject[elem.date].event = this.objEvent;
+	    }
+	  }, {
+	    key: 'setListDate',
+	    value: function setListDate() {
+	      this.objListDate = this.loaderService.setListDate();
+	    }
+	  }, {
+	    key: 'getListDate',
+	    value: function getListDate() {
+	      return this.objListDate;
+	    }
+	  }, {
+	    key: 'getFilter',
+	    value: function getFilter() {
+	      return this.filter;
+	    }
+	  }, {
+	    key: 'setElemsTodo',
+	    value: function setElemsTodo(path) {
+	      this.objTodo = this.loaderService.setTodo(path);
+	    }
+	  }, {
+	    key: 'getObjTodo',
+	    value: function getObjTodo() {
+	      return this.objTodo;
+	    }
+	  }, {
+	    key: 'setElemsMeeting',
+	    value: function setElemsMeeting(path) {
+	      this.objMeeting = this.loaderService.setMeeting(path);
+	    }
+	  }, {
+	    key: 'getObjMeeting',
+	    value: function getObjMeeting() {
+	      return this.objMeeting;
+	    }
+	  }, {
+	    key: 'setElemsEvent',
+	    value: function setElemsEvent(path) {
+	      this.objEvent = this.loaderService.setEvent(path);
+	    }
+	  }, {
+	    key: 'getObjEvent',
+	    value: function getObjEvent() {
+	      return this.objEvent;
+	    }
+	  }]);
+
+	  return MainService;
+	}();
+
+	exports.default = MainService;
 
 /***/ },
 /* 7 */
@@ -40477,22 +40481,32 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
+	var _todoComponent = __webpack_require__(8);
+
+	var _todoComponent2 = _interopRequireDefault(_todoComponent);
+
+	var _addTodoComponent = __webpack_require__(10);
+
+	var _addTodoComponent2 = _interopRequireDefault(_addTodoComponent);
+
+	var _viewTodoComponent = __webpack_require__(12);
+
+	var _viewTodoComponent2 = _interopRequireDefault(_viewTodoComponent);
+
+	var _deleteTodoComponent = __webpack_require__(14);
+
+	var _deleteTodoComponent2 = _interopRequireDefault(_deleteTodoComponent);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _angular2.default.module('app.todo', []);
-
-
-	__webpack_require__(8);
-	__webpack_require__(9);
-	__webpack_require__(10);
-	__webpack_require__(11);
+	exports.default = _angular2.default.module('app.todo', []).component('todoList', _todoComponent2.default).component('todoAdd', _addTodoComponent2.default).component('todoView', _viewTodoComponent2.default).component('todoDelete', _deleteTodoComponent2.default);
 
 /***/ },
 /* 8 */
@@ -40500,109 +40514,65 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	  'use strict';
-
-	  var TodoList = function () {
-	    function TodoList() {
-	      _classCallCheck(this, TodoList);
-	    }
-
-	    _createClass(TodoList, [{
-	      key: 'add',
-	      value: function add(text) {
-	        if (text != "") {
-	          this.object.elems.push({
-	            select: false,
-	            text: text,
-	            complete: false,
-	            optional: false
-	          });
-	        }
-	      }
-	    }, {
-	      key: 'deleteSelectTodos',
-	      value: function deleteSelectTodos() {
-	        var elems = this.object.elems;
-	        for (var i = 0; i < elems.length;) {
-	          if (elems[i].select) {
-	            elems.splice(i, 1);
-	          } else i++;
-	        }
-	      }
-	    }]);
-
-	    return TodoList;
-	  }();
-
-	  _angular2.default.module('app.todo').component('todoList', {
-	    templateUrl: './js/todo/templates/todoList.html',
-	    controller: TodoList,
-	    controllerAs: 'Todo',
-	    bindings: {
-	      object: '<',
-	      filter: '<'
-	    }
-	  });
-	})();
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
+	var template = __webpack_require__(9);
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var TodoList = function () {
+	  function TodoList() {
+	    _classCallCheck(this, TodoList);
+	  }
 
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	(function () {
-	  'use strict';
-
-	  var TodoAdd = function () {
-	    function TodoAdd() {
-	      _classCallCheck(this, TodoAdd);
-
-	      this.text = "";
-	    }
-
-	    _createClass(TodoAdd, [{
-	      key: 'addElem',
-	      value: function addElem() {
-	        this.add({ text: this.text });
-	        this.text = "";
+	  _createClass(TodoList, [{
+	    key: 'add',
+	    value: function add(text) {
+	      if (text != "") {
+	        this.object.elems.push({
+	          select: false,
+	          text: text,
+	          complete: false,
+	          optional: false
+	        });
 	      }
-	    }]);
-
-	    return TodoAdd;
-	  }();
-
-	  _angular2.default.module('app.todo').component('todoAdd', {
-	    templateUrl: 'js/todo/templates/add.html',
-	    controller: TodoAdd,
-	    controllerAs: 'Add',
-	    bindings: {
-	      text: '<',
-	      add: '&'
 	    }
-	  });
-	})();
+	  }, {
+	    key: 'deleteSelectTodos',
+	    value: function deleteSelectTodos() {
+	      var elems = this.object.elems;
+	      for (var i = 0; i < elems.length;) {
+	        if (elems[i].select) {
+	          elems.splice(i, 1);
+	        } else i++;
+	      }
+	    }
+	  }]);
+
+	  return TodoList;
+	}();
+
+	exports.default = {
+	  template: template,
+	  controller: TodoList,
+	  controllerAs: 'Todo',
+	  bindings: {
+	    object: '<',
+	    filter: '<'
+	  }
+	};
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = "<todo-add add=\"Todo.add(text)\"></todo-add>\r\n<todo-view object=\"Todo.object\" filter=\"Todo.filter\"></todo-view>\r\n<todo-delete del=\"Todo.deleteSelectTodos()\"></todo-delete>\r\n";
 
 /***/ },
 /* 10 */
@@ -40610,48 +40580,51 @@
 
 	'use strict';
 
-	var _angular = __webpack_require__(1);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
-	var _angular2 = _interopRequireDefault(_angular);
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	  'use strict';
-
-	  _angular2.default.module('app.todo').component('todoView', {
-	    templateUrl: 'js/todo/templates/view.html',
-	    controllerAs: 'View',
-	    bindings: {
-	      object: '<',
-	      filter: '<'
-	    }
-	  });
-	})();
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
+	var template = __webpack_require__(11);
 
 	'use strict';
 
-	var _angular = __webpack_require__(1);
+	var TodoAdd = function () {
+	  function TodoAdd() {
+	    _classCallCheck(this, TodoAdd);
 
-	var _angular2 = _interopRequireDefault(_angular);
+	    this.text = "";
+	  }
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	(function () {
-	  'use strict';
-
-	  _angular2.default.module('app.todo').component('todoDelete', {
-	    templateUrl: 'js/todo/templates/delete.html',
-	    controllerAs: 'Delete',
-	    bindings: {
-	      del: '&'
+	  _createClass(TodoAdd, [{
+	    key: 'addElem',
+	    value: function addElem() {
+	      this.add({ text: this.text });
+	      this.text = "";
 	    }
-	  });
-	})();
+	  }]);
+
+	  return TodoAdd;
+	}();
+
+	exports.default = {
+	  template: template,
+	  controller: TodoAdd,
+	  controllerAs: 'Add',
+	  bindings: {
+	    text: '<',
+	    add: '&'
+	  }
+	};
+
+/***/ },
+/* 11 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"listAdd\">\r\n  <input class=\"listAddTodoText\" type=\"text\" ng-model=\"Add.text\" placeholder=\"текст\">\r\n  <input class=\"listAddButton\" type=\"button\" ng-click=\"Add.addElem()\" value=\"Добавить\">\r\n</div>";
 
 /***/ },
 /* 12 */
@@ -40662,83 +40635,24 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _angular2.default.module('app.meeting', []);
-
-
-	__webpack_require__(13);
-	__webpack_require__(14);
-	__webpack_require__(15);
-	__webpack_require__(16);
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
+	var template = __webpack_require__(13);
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	exports.default = {
+	  template: template,
+	  controllerAs: 'View',
+	  bindings: {
+	    object: '<',
+	    filter: '<'
+	  }
+	};
 
-	var _angular = __webpack_require__(1);
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
 
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	(function () {
-	  'use strict';
-
-	  var MeetingList = function () {
-	    function MeetingList() {
-	      _classCallCheck(this, MeetingList);
-	    }
-
-	    _createClass(MeetingList, [{
-	      key: 'add',
-	      value: function add(text, time) {
-	        if (text != "" && time != "") {
-	          this.object.elems.push({
-	            select: false,
-	            text: text,
-	            complete: false,
-	            optional: false,
-	            time: time
-	          });
-	        }
-	      }
-	    }, {
-	      key: 'deleteSelectTodos',
-	      value: function deleteSelectTodos() {
-	        var elems = this.object.elems;
-	        for (var i = 0; i < elems.length;) {
-	          if (elems[i].select) {
-	            elems.splice(i, 1);
-	          } else i++;
-	        }
-	      }
-	    }]);
-
-	    return MeetingList;
-	  }();
-
-	  _angular2.default.module('app.meeting').component('meetingList', {
-	    templateUrl: './js/meeting/templates/meetingList.html',
-	    controller: MeetingList,
-	    controllerAs: 'Meeting',
-	    bindings: {
-	      object: '<',
-	      filter: '<'
-	    }
-	  });
-	})();
+	module.exports = "<div class=\"listView\">\r\n  <table width=\"100%\" cols=\"4\" >\r\n    <tr ng-repeat=\"elem in View.object.elems | filter:View.filter.find | orderBy:View.filter.order\">\r\n      <td><input type=\"checkbox\" ng-model=\"elem.select\"></td>\r\n      <td ng-class=\"{listForDelete: elem.select}\">\r\n        <div ng-class=\"{listComplete: elem.complete, listOptional: elem.optional}\" ng-bind=\"elem.text\"></div>\r\n        <hr>\r\n      </td>\r\n      <td><img class=\"listImg\" ng-src=\"img/complete{{elem.complete}}.png\" ng-click=\"elem.complete = !elem.complete\"></td>\r\n      <td><input type=\"checkbox\" ng-model=\"elem.optional\"></td>\r\n    </tr>\r\n  </table>\r\n</div>";
 
 /***/ },
 /* 14 */
@@ -40746,75 +40660,26 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	(function () {
-	  'use strict';
-
-	  var MeetingAdd = function () {
-	    function MeetingAdd() {
-	      _classCallCheck(this, MeetingAdd);
-
-	      this.text = "";
-	      this.time = "";
-	    }
-
-	    _createClass(MeetingAdd, [{
-	      key: 'addElem',
-	      value: function addElem() {
-	        this.add({ text: this.text, time: this.time });
-	        this.text = "";
-	        this.time = "";
-	      }
-	    }]);
-
-	    return MeetingAdd;
-	  }();
-
-	  _angular2.default.module('app.meeting').component('meetingAdd', {
-	    templateUrl: 'js/meeting/templates/add.html',
-	    controller: MeetingAdd,
-	    controllerAs: 'Add',
-	    bindings: {
-	      text: '<',
-	      time: '<',
-	      add: '&'
-	    }
-	  });
-	})();
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var template = __webpack_require__(15);
 
 	'use strict';
 
-	var _angular = __webpack_require__(1);
+	exports.default = {
+	  template: template,
+	  controllerAs: 'Delete',
+	  bindings: {
+	    del: '&'
+	  }
+	};
 
-	var _angular2 = _interopRequireDefault(_angular);
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	(function () {
-	  'use strict';
-
-	  _angular2.default.module('app.meeting').component('meetingView', {
-	    templateUrl: 'js/meeting/templates/view.html',
-	    controllerAs: 'View',
-	    bindings: {
-	      object: '<',
-	      filter: '<'
-	    }
-	  });
-	})();
+	module.exports = "<div class=\"listDelete\">\r\n  <input  type=\"button\" ng-click=\"Delete.del()\" value=\"Удалить\">\r\n  <div class=\"listDeleteText\">не обязательно</div>\r\n</div>";
 
 /***/ },
 /* 16 */
@@ -40822,23 +40687,33 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
+	var _meetingComponent = __webpack_require__(17);
+
+	var _meetingComponent2 = _interopRequireDefault(_meetingComponent);
+
+	var _addMeetingComponent = __webpack_require__(19);
+
+	var _addMeetingComponent2 = _interopRequireDefault(_addMeetingComponent);
+
+	var _viewMeetingComponent = __webpack_require__(21);
+
+	var _viewMeetingComponent2 = _interopRequireDefault(_viewMeetingComponent);
+
+	var _deleteMeetingComponent = __webpack_require__(23);
+
+	var _deleteMeetingComponent2 = _interopRequireDefault(_deleteMeetingComponent);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	(function () {
-	  'use strict';
-
-	  _angular2.default.module('app.meeting').component('meetingDelete', {
-	    templateUrl: 'js/meeting/templates/delete.html',
-	    controllerAs: 'Delete',
-	    bindings: {
-	      del: '&'
-	    }
-	  });
-	})();
+	exports.default = _angular2.default.module('app.meeting', []).component('meetingList', _meetingComponent2.default).component('meetingAdd', _addMeetingComponent2.default).component('meetingView', _viewMeetingComponent2.default).component('meetingDelete', _deleteMeetingComponent2.default);
 
 /***/ },
 /* 17 */
@@ -40850,79 +40725,62 @@
 	  value: true
 	});
 
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _angular2.default.module('app.event', []);
-
-
-	__webpack_require__(18);
-	__webpack_require__(19);
-	__webpack_require__(20);
-	__webpack_require__(21);
-
-/***/ },
-/* 18 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	  'use strict';
+	var template = __webpack_require__(18);
 
-	  var EventList = function () {
-	    function EventList() {
-	      _classCallCheck(this, EventList);
-	    }
+	'use strict';
 
-	    _createClass(EventList, [{
-	      key: 'add',
-	      value: function add(text) {
-	        if (text != "") {
-	          this.object.elems.push({
-	            select: false,
-	            text: text
-	          });
-	        }
+	var MeetingList = function () {
+	  function MeetingList() {
+	    _classCallCheck(this, MeetingList);
+	  }
+
+	  _createClass(MeetingList, [{
+	    key: 'add',
+	    value: function add(text, time) {
+	      if (text != "" && time != "") {
+	        this.object.elems.push({
+	          select: false,
+	          text: text,
+	          complete: false,
+	          optional: false,
+	          time: time
+	        });
 	      }
-	    }, {
-	      key: 'deleteSelectTodos',
-	      value: function deleteSelectTodos() {
-	        var elems = this.object.elems;
-	        for (var i = 0; i < elems.length;) {
-	          if (elems[i].select) {
-	            elems.splice(i, 1);
-	          } else i++;
-	        }
-	      }
-	    }]);
-
-	    return EventList;
-	  }();
-
-	  _angular2.default.module('app.event').component('eventList', {
-	    templateUrl: './js/event/templates/eventList.html',
-	    controller: EventList,
-	    controllerAs: 'Event',
-	    bindings: {
-	      object: '<',
-	      filter: '<'
 	    }
-	  });
-	})();
+	  }, {
+	    key: 'deleteSelectTodos',
+	    value: function deleteSelectTodos() {
+	      var elems = this.object.elems;
+	      for (var i = 0; i < elems.length;) {
+	        if (elems[i].select) {
+	          elems.splice(i, 1);
+	        } else i++;
+	      }
+	    }
+	  }]);
+
+	  return MeetingList;
+	}();
+
+	exports.default = {
+	  template: template,
+	  controller: MeetingList,
+	  controllerAs: 'Meeting',
+	  bindings: {
+	    object: '<',
+	    filter: '<'
+	  }
+	};
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	module.exports = "<meeting-add add=\"Meeting.add(text, time)\"></meeting-add>\r\n<meeting-view object=\"Meeting.object\" filter=\"Meeting.filter\"></meeting-view>\r\n<meeting-delete del=\"Meeting.deleteSelectTodos()\"></meeting-delete>";
 
 /***/ },
 /* 19 */
@@ -40930,72 +40788,54 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	  'use strict';
-
-	  var EventAdd = function () {
-	    function EventAdd() {
-	      _classCallCheck(this, EventAdd);
-
-	      this.text = "";
-	    }
-
-	    _createClass(EventAdd, [{
-	      key: 'addElem',
-	      value: function addElem() {
-	        this.add({ value: this.text });
-	        this.text = "";
-	      }
-	    }]);
-
-	    return EventAdd;
-	  }();
-
-	  _angular2.default.module('app.event').component('eventAdd', {
-	    templateUrl: 'js/event/templates/add.html',
-	    controller: EventAdd,
-	    controllerAs: 'Add',
-	    bindings: {
-	      text: '<',
-	      add: '&'
-	    }
-	  });
-	})();
-
-/***/ },
-/* 20 */
-/***/ function(module, exports, __webpack_require__) {
+	var template = __webpack_require__(20);
 
 	'use strict';
 
-	var _angular = __webpack_require__(1);
+	var MeetingAdd = function () {
+	  function MeetingAdd() {
+	    _classCallCheck(this, MeetingAdd);
 
-	var _angular2 = _interopRequireDefault(_angular);
+	    this.text = "";
+	    this.time = "";
+	  }
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	(function () {
-	  'use strict';
-
-	  _angular2.default.module('app.event').component('eventView', {
-	    templateUrl: 'js/event/templates/view.html',
-	    controllerAs: 'View',
-	    bindings: {
-	      object: '<',
-	      filter: '<'
+	  _createClass(MeetingAdd, [{
+	    key: 'addElem',
+	    value: function addElem() {
+	      this.add({ text: this.text, time: this.time });
+	      this.text = "";
+	      this.time = "";
 	    }
-	  });
-	})();
+	  }]);
+
+	  return MeetingAdd;
+	}();
+
+	exports.default = {
+	  template: template,
+	  controller: MeetingAdd,
+	  controllerAs: 'Add',
+	  bindings: {
+	    text: '<',
+	    time: '<',
+	    add: '&'
+	  }
+	};
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"listAdd\">\r\n  <input class=\"listAddMeetingTime\" type=\"text\" ng-model=\"Add.time\" placeholder=\"время\">\r\n  <input class=\"listAddMeetingText\" type=\"text\" ng-model=\"Add.text\" placeholder=\"подробности\">\r\n  <input style=\"listAddButton\" type=\"button\" ng-click=\"Add.addElem()\" value=\"Добавить\">\r\n</div>";
 
 /***/ },
 /* 21 */
@@ -41003,75 +40843,322 @@
 
 	'use strict';
 
-	var _angular = __webpack_require__(1);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var template = __webpack_require__(22);
 
-	var _angular2 = _interopRequireDefault(_angular);
+	'use strict';
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	(function () {
-	  'use strict';
-
-	  _angular2.default.module('app.event').component('eventDelete', {
-	    templateUrl: 'js/event/templates/delete.html',
-	    controllerAs: 'Delete',
-	    bindings: {
-	      del: '&'
-	    }
-	  });
-	})();
+	exports.default = {
+	  template: template,
+	  controllerAs: 'View',
+	  bindings: {
+	    object: '<',
+	    filter: '<'
+	  }
+	};
 
 /***/ },
 /* 22 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"listView\">\r\n  <table width=\"100%\" cols=\"4\" >\r\n    <tr ng-repeat=\"elem in View.object.elems | filter:View.filter.find | orderBy:View.filter.order\">\r\n      <td><input type=\"checkbox\" ng-model=\"elem.select\"></td>\r\n      <td ng-class=\"{listForDelete: elem.select}\">\r\n        <div ng-class=\"{listComplete: elem.complete, listOptional: elem.optional}\">\r\n          <span class=\"listTime\" ng-bind=\"elem.time\"></span>\r\n          <div ng-bind=\"elem.text\"></div>\r\n          <hr>\r\n        </div>\r\n      </td>\r\n      <td><img class=\"listImg\" ng-src=\"img/complete{{elem.complete}}.png\" ng-click=\"elem.complete = !elem.complete\"></td>\r\n      <td><input type=\"checkbox\" ng-model=\"elem.optional\"></td>\r\n    </tr>\r\n  </table>\r\n</div>";
+
+/***/ },
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var template = __webpack_require__(24);
+
+	'use strict';
+
+	exports.default = {
+	  template: template,
+	  controllerAs: 'Delete',
+	  bindings: {
+	    del: '&'
+	  }
+	};
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"listDelete\">\r\n  <input  type=\"button\" ng-click=\"Delete.del()\" value=\"Удалить\">\r\n  <div class=\"listDeleteText\">не обязательно</div>\r\n</div>";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
 
+	var _eventComponent = __webpack_require__(26);
+
+	var _eventComponent2 = _interopRequireDefault(_eventComponent);
+
+	var _addEventComponent = __webpack_require__(28);
+
+	var _addEventComponent2 = _interopRequireDefault(_addEventComponent);
+
+	var _viewEventComponent = __webpack_require__(30);
+
+	var _viewEventComponent2 = _interopRequireDefault(_viewEventComponent);
+
+	var _deleteEventComponent = __webpack_require__(32);
+
+	var _deleteEventComponent2 = _interopRequireDefault(_deleteEventComponent);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	(function () {
-	  'use strict';
+	exports.default = _angular2.default.module('app.event', []).component('eventList', _eventComponent2.default).component('eventAdd', _addEventComponent2.default).component('eventView', _viewEventComponent2.default).component('eventDelete', _deleteEventComponent2.default);
 
-	  _angular2.default.module('app').config(configure);
+/***/ },
+/* 26 */
+/***/ function(module, exports, __webpack_require__) {
 
-	  configure.$ingect = ['$stateProvider', '$urlRouterProvider'];
+	'use strict';
 
-	  function configure($stateProvider, $urlRouterProvider) {
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var template = __webpack_require__(27);
+
+	'use strict';
+
+	var EventList = function () {
+	  function EventList() {
+	    _classCallCheck(this, EventList);
+	  }
+
+	  _createClass(EventList, [{
+	    key: 'add',
+	    value: function add(text) {
+	      if (text != "") {
+	        this.object.elems.push({
+	          select: false,
+	          text: text
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'deleteSelectTodos',
+	    value: function deleteSelectTodos() {
+	      var elems = this.object.elems;
+	      for (var i = 0; i < elems.length;) {
+	        if (elems[i].select) {
+	          elems.splice(i, 1);
+	        } else i++;
+	      }
+	    }
+	  }]);
+
+	  return EventList;
+	}();
+
+	exports.default = {
+	  template: template,
+	  controller: EventList,
+	  controllerAs: 'Event',
+	  bindings: {
+	    object: '<',
+	    filter: '<'
+	  }
+	};
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	module.exports = "<event-add add=\"Event.add(value)\"></event-add>\r\n<event-view object=\"Event.object\" filter=\"Event.filter\"></event-view>\r\n<event-delete del=\"Event.deleteSelectTodos()\"></event-delete>";
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var template = __webpack_require__(29);
+
+	'use strict';
+
+	var EventAdd = function () {
+	  function EventAdd() {
+	    _classCallCheck(this, EventAdd);
+
+	    this.text = "";
+	  }
+
+	  _createClass(EventAdd, [{
+	    key: 'addElem',
+	    value: function addElem() {
+	      this.add({ value: this.text });
+	      this.text = "";
+	    }
+	  }]);
+
+	  return EventAdd;
+	}();
+
+	exports.default = {
+	  template: template,
+	  controller: EventAdd,
+	  controllerAs: 'Add',
+	  bindings: {
+	    text: '<',
+	    add: '&'
+	  }
+	};
+
+/***/ },
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"listAdd\">\r\n  <input class=\"listAddEventText\" type=\"text\" ng-model=\"Add.text\" placeholder=\"текст\">\r\n  <input class=\"listAddButton\" type=\"button\" ng-click=\"Add.addElem()\" value=\"Добавить\">\r\n</div>";
+
+/***/ },
+/* 30 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var template = __webpack_require__(31);
+
+	'use strict';
+
+	exports.default = {
+	  template: template,
+	  controllerAs: 'View',
+	  bindings: {
+	    object: '<',
+	    filter: '<'
+	  }
+	};
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"listView\">\r\n  <table width=\"100%\" cols=\"4\" >\r\n    <tr ng-repeat=\"elem in View.object.elems | filter:View.filter.find | orderBy:View.filter.order\">\r\n      <td><input type=\"checkbox\" ng-model=\"elem.select\"></td>\r\n      <td ng-class=\"{listForDelete: elem.select}\"><div ng-bind=\"elem.text\"></div><hr></td>\r\n    </tr>\r\n  </table>\r\n</div>";
+
+/***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var template = __webpack_require__(33);
+
+	'use strict';
+
+	exports.default = {
+	  template: template,
+	  controllerAs: 'Delete',
+	  bindings: {
+	    del: '&'
+	  }
+	};
+
+/***/ },
+/* 33 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"listDelete\">\r\n  <input type=\"button\" ng-click=\"Delete.del()\" value=\"Удалить\">\r\n</div>";
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Configure = function () {
+	  _createClass(Configure, null, [{
+	    key: '$inject',
+	    get: function get() {
+	      return ['$stateProvider', '$urlRouterProvider'];
+	    }
+	  }]);
+
+	  function Configure($stateProvider, $urlRouterProvider) {
+	    _classCallCheck(this, Configure);
+
+	    this.loadFiles.$inject = ['mainService', '$stateParams', '$q'];
+	    this.getTodo.$inject = ['mainService'];
+	    this.getMeeting.$inject = ['mainService'];
+	    this.getEvent.$inject = ['mainService'];
+	    this.getFilter.$inject = ['mainService'];
+
 	    var states = [{
 	      abstract: true,
 	      name: 'date',
 	      url: '/date/{id}',
 	      component: 'selectDate',
 	      resolve: {
-	        set: loadFiles
+	        set: this.loadFiles
 	      }
 	    }, {
 	      name: 'date.todo',
 	      component: 'todoList',
 	      url: '/todo',
 	      resolve: {
-	        object: getTodo,
-	        filter: getFilter
+	        object: this.getTodo,
+	        filter: this.getFilter
 	      }
 	    }, {
 	      name: 'date.meeting',
 	      component: 'meetingList',
 	      url: '/meeting',
 	      resolve: {
-	        object: getMeeting,
-	        filter: getFilter
+	        object: this.getMeeting,
+	        filter: this.getFilter
 	      }
 	    }, {
 	      name: 'date.event',
 	      component: 'eventList',
 	      url: '/event',
 	      resolve: {
-	        object: getEvent,
-	        filter: getFilter
+	        object: this.getEvent,
+	        filter: this.getFilter
 	      }
 	    }];
 
@@ -41081,94 +41168,107 @@
 	    $urlRouterProvider.otherwise('/');
 	  }
 
-	  loadFiles.$inject = ['mainService', '$stateParams', '$q'];
-	  function loadFiles(mainService, $stateParams, $q) {
-	    var deferred = $q.defer();
+	  _createClass(Configure, [{
+	    key: 'loadFiles',
+	    value: function loadFiles(mainService, $stateParams, $q) {
+	      var deferred = $q.defer();
 
-	    var id = $stateParams.id;
-	    if (!mainService.loadFile(id)) {
-	      var listDate = mainService.getListDate().list;
-	      for (var i = 0; i < listDate.length; i++) {
-	        if (id === listDate[i].date) {
-	          mainService.newLoadFile(listDate[i]);
+	      var id = $stateParams.id;
+	      if (!mainService.loadFile(id)) {
+	        var listDate = mainService.getListDate().list;
+	        for (var i = 0; i < listDate.length; i++) {
+	          if (id === listDate[i].date) {
+	            mainService.newLoadFile(listDate[i]);
+	          }
 	        }
 	      }
+	      setTimeout(function () {
+	        if (mainService.getObjTodo().error) {
+	          alert(mainService.getObjTodo().error);
+	          deferred.reject();
+	        } else if (mainService.getObjMeeting().error) {
+	          alert(mainService.getObjMeeting().error);
+	          deferred.reject();
+	        } else if (mainService.getObjEvent().error) {
+	          alert(mainService.getObjEvent().error);
+	          deferred.reject();
+	        }
+	        deferred.resolve();
+	      }, 100);
+	      return deferred.promise;
 	    }
-	    setTimeout(function () {
-	      if (mainService.getObjTodo().error) {
-	        alert(mainService.getObjTodo().error);
-	        deferred.reject();
-	      } else if (mainService.getObjMeeting().error) {
-	        alert(mainService.getObjMeeting().error);
-	        deferred.reject();
-	      } else if (mainService.getObjEvent().error) {
-	        alert(mainService.getObjEvent().error);
-	        deferred.reject();
-	      }
-	      deferred.resolve();
-	    }, 100);
-	    return deferred.promise;
-	  }
+	  }, {
+	    key: 'getTodo',
+	    value: function getTodo(mainService) {
+	      return mainService.getObjTodo();
+	    }
+	  }, {
+	    key: 'getMeeting',
+	    value: function getMeeting(mainService) {
+	      return mainService.getObjMeeting();
+	    }
+	  }, {
+	    key: 'getEvent',
+	    value: function getEvent(mainService) {
+	      return mainService.getObjEvent();
+	    }
+	  }, {
+	    key: 'getFilter',
+	    value: function getFilter(mainService) {
+	      return mainService.getFilter();
+	    }
+	  }], [{
+	    key: 'factory',
+	    value: function factory() {
+	      var func = function func($stateProvider, $urlRouterProvider) {
+	        return new Configure($stateProvider, $urlRouterProvider);
+	      };
+	      func.$inject = ['$stateProvider', '$urlRouterProvider'];
+	      return func;
+	    }
+	  }]);
 
-	  getTodo.$inject = ['mainService'];
-	  function getTodo(mainService) {
-	    return mainService.getObjTodo();
-	  }
+	  return Configure;
+	}();
 
-	  getMeeting.$inject = ['mainService'];
-	  function getMeeting(mainService) {
-	    return mainService.getObjMeeting();
-	  }
-
-	  getEvent.$inject = ['mainService'];
-	  function getEvent(mainService) {
-	    return mainService.getObjEvent();
-	  }
-
-	  getFilter.$inject = ['mainService'];
-	  function getFilter(mainService) {
-	    return mainService.getFilter();
-	  }
-	})();
+	exports.default = Configure.factory();
 
 /***/ },
-/* 23 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	(function () {
-
-	  'use strict';
-
-	  _angular2.default.module('app').component('selectDate', {
-	    templateUrl: './js/selectedDate.html'
-	  });
-	})();
-
-/***/ },
-/* 24 */
-/***/ function(module, exports, __webpack_require__) {
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var template = __webpack_require__(36);
 
 	'use strict';
+
+	exports.default = {
+		template: template
+	};
+
+/***/ },
+/* 36 */
+/***/ function(module, exports) {
+
+	module.exports = "<div ng-controller=\"FilterController as Filter\">\r\n  <input id=\"searches\" ng-model=\"Filter.filter.find\" type=\"text\" placeholder=\"Поиск\">\r\n  <div id=\"sort\">Сортировка:\r\n    <select ng-model=\"Filter.filter.order\">\r\n      <option value=\"\">без сортировки</option>\r\n      <option value=\"text\">по содержимому</option>\r\n      <option value=\"complete\">по завершенности</option>\r\n      <option value=\"optional\">по важности</option>\r\n      <option value=\"time\">по времени</option>        \r\n    </select>  \r\n  </div>\r\n</div>\r\n<hr>\r\n\r\n<div id=\"mainTodoList\">\r\n  <a ui-sref=\"date.todo\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">Дела</div>\r\n  </a>\r\n</div>\r\n<div id=\"mainMeetings\">\r\n  <a ui-sref=\"date.meeting\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">Встречи</div>\r\n  </a>\r\n</div>\r\n<div id=\"mainEvents\">\r\n  <a ui-sref=\"date.event\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">События</div>\r\n  </a>\r\n</div>\r\n\r\n<div id=\"TMElist\">\r\n  <ui-view></ui-view>\r\n</div>\r\n";
+
+/***/ },
+/* 37 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	'use strict';
 
 	var FilterController = function () {
 	  _createClass(FilterController, null, [{
@@ -41187,25 +41287,21 @@
 	  return FilterController;
 	}();
 
-	_angular2.default.module('app').controller('FilterController', FilterController);
+	exports.default = FilterController;
 
 /***/ },
-/* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/* 38 */
+/***/ function(module, exports) {
 
 	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _angular = __webpack_require__(1);
-
-	var _angular2 = _interopRequireDefault(_angular);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	'use strict';
 
 	var MainController = function () {
 	  _createClass(MainController, null, [{
@@ -41229,7 +41325,7 @@
 	  return MainController;
 	}();
 
-	_angular2.default.module('app').controller('MainController', MainController);
+	exports.default = MainController;
 
 /***/ }
 /******/ ]);

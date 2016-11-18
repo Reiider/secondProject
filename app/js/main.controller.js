@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 'use strict'
 
 class MainController{
@@ -15,6 +13,4 @@ class MainController{
   }    
 }
 
-angular
-.module('app')
-.controller('MainController', MainController);
+export default MainController;

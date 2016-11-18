@@ -1,29 +1,24 @@
-import angular from 'angular';
+var template = require('html!./templates/add.html');
 
-(function(){
-  'use strict'
+'use strict'
 
-  class EventAdd{
-    constructor(){
-      this.text = ""; 
-    }
-    
-    addElem(){
-      this.add({value: this.text});
-      this.text = ""; 
-    }
+class EventAdd{
+  constructor(){
+    this.text = ""; 
   }
+  
+  addElem(){
+    this.add({value: this.text});
+    this.text = ""; 
+  }
+}
 
-  angular
-  .module('app.event')
-  .component('eventAdd', {
-    templateUrl: 'js/event/templates/add.html',
-    controller: EventAdd,
-    controllerAs: 'Add',
-    bindings:{
-      text:'<',
-      add:'&'      
-    }
-  });
-
-})();
+export default {
+  template,
+  controller: EventAdd,
+  controllerAs: 'Add',
+  bindings:{
+    text:'<',
+    add:'&'      
+  }
+};

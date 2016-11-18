@@ -1,29 +1,24 @@
-import angular from 'angular';
+var template = require('html!./templates/add.html');
 
-(function(){
-  'use strict'
+'use strict'
 
-  class TodoAdd{
-    constructor(){
-      this.text = "";  
-    }
-
-    addElem(){
-      this.add({text: this.text});
-      this.text = "";
-    }
+class TodoAdd{
+  constructor(){
+    this.text = "";  
   }
 
-  angular
-  .module('app.todo')
-  .component('todoAdd', {
-    templateUrl: 'js/todo/templates/add.html',
-    controller: TodoAdd,
-    controllerAs: 'Add',
-    bindings:{
-      text:'<',
-      add:'&'      
-    }
-  });
+  addElem(){
+    this.add({text: this.text});
+    this.text = "";
+  }
+}
 
-})();
+export default {
+  template,
+  controller: TodoAdd,
+  controllerAs: 'Add',
+  bindings:{
+    text:'<',
+    add:'&'      
+  }
+};

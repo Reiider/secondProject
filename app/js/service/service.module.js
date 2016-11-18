@@ -1,6 +1,9 @@
 import angular from 'angular';
- 
-export default angular.module('app.service', []);
 
-require('./loader.service.js');
-require('./main.service.js');
+import loaderService from './loader.service.js';
+import mainService from './main.service.js';
+
+export default angular
+	.module('app.service', [])
+		.service('loaderService', loaderService)
+		.service('mainService', mainService);
