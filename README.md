@@ -3,9 +3,9 @@ Install npm
 
 Open terminal
 
-Type: 
-  - npm install -g http-server
+Type:
   - cd "path to the project"
-  - http-server
+  - npm install
+  - npm start
   
   Open your browser and write next address: localhost:8080/
