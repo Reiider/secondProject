@@ -1,0 +1,35 @@
+<div class="form">
+<ng-form  name="$ctrl.myForm">
+  <div class="elemsOfForm">
+    First Name: 
+    <input  type="text" 
+            ng-class="{valid: $ctrl.myForm.FName.$valid, noValid: !$ctrl.myForm.FName.$valid}" 
+            ng-model="$ctrl.FName" 
+            name ="FName">
+  </div>
+  <div class="elemsOfForm">
+    Second Name: 
+    <input  type="text" 
+            ng-class="{valid: $ctrl.myForm.SName.$valid, noValid: !$ctrl.myForm.SName.$valid}" 
+            ng-model="$ctrl.SName" 
+            name ="SName">
+  </div>
+  <div class="elemsOfForm">
+    Mail: 
+    <input  type="text" 
+            ng-class="{valid: $ctrl.myForm.Mail.$valid, noValid: !$ctrl.myForm.Mail.$valid}" 
+            ng-model="$ctrl.Mail" 
+            name ="Mail">
+  </div>
+  <ng-form name="roboForm">
+    <div class="elemsOfForm">
+    Are you robot? 
+    <input  type="text" 
+            ng-class="{valid: $ctrl.myForm.roboForm.Robot.$valid, noValid: !$ctrl.myForm.roboForm.Robot.$valid}" 
+            ng-model="$ctrl.Robot" 
+            name ="Robot">
+  </div>
+  </ng-form>
+  Form valid is {{$ctrl.myForm.$valid}}
+</ng-form>
+</div>

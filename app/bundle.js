@@ -70,6 +70,10 @@
 
 	var _eventModule2 = _interopRequireDefault(_eventModule);
 
+	var _formModule = __webpack_require__(39);
+
+	var _formModule2 = _interopRequireDefault(_formModule);
+
 	var _mainConfig = __webpack_require__(34);
 
 	var _mainConfig2 = _interopRequireDefault(_mainConfig);
@@ -88,10 +92,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	(function () {
-
-		_angular2.default.module('app', ['ui.router', _serviceModule2.default.name, _todoModule2.default.name, _meetingModule2.default.name, _eventModule2.default.name]).config(_mainConfig2.default).controller('FilterController', _filterController2.default).controller('MainController', _mainController2.default).component('selectDate', _selectDateComponent2.default);
-	})();
+	_angular2.default.module('app', ['ui.router', _serviceModule2.default.name, _todoModule2.default.name, _meetingModule2.default.name, _eventModule2.default.name, _formModule2.default.name]).config(_mainConfig2.default).controller('FilterController', _filterController2.default).controller('MainController', _mainController2.default).component('selectDate', _selectDateComponent2.default);
 
 /***/ },
 /* 1 */
@@ -41160,6 +41161,11 @@
 	        object: this.getEvent,
 	        filter: this.getFilter
 	      }
+	    }, {
+	      name: 'toForm',
+	      component: 'theForm',
+	      url: '/form',
+	      resolve: {}
 	    }];
 
 	    states.forEach(function (state) {
@@ -41254,7 +41260,7 @@
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "<div ng-controller=\"FilterController as Filter\">\r\n  <input id=\"searches\" ng-model=\"Filter.filter.find\" type=\"text\" placeholder=\"Поиск\">\r\n  <div id=\"sort\">Сортировка:\r\n    <select ng-model=\"Filter.filter.order\">\r\n      <option value=\"\">без сортировки</option>\r\n      <option value=\"text\">по содержимому</option>\r\n      <option value=\"complete\">по завершенности</option>\r\n      <option value=\"optional\">по важности</option>\r\n      <option value=\"time\">по времени</option>        \r\n    </select>  \r\n  </div>\r\n</div>\r\n<hr>\r\n\r\n<div id=\"mainTodoList\">\r\n  <a ui-sref=\"date.todo\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">Дела</div>\r\n  </a>\r\n</div>\r\n<div id=\"mainMeetings\">\r\n  <a ui-sref=\"date.meeting\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">Встречи</div>\r\n  </a>\r\n</div>\r\n<div id=\"mainEvents\">\r\n  <a ui-sref=\"date.event\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">События</div>\r\n  </a>\r\n</div>\r\n\r\n<div id=\"TMElist\">\r\n  <ui-view></ui-view>\r\n</div>\r\n";
+	module.exports = "<div ng-controller=\"FilterController as Filter\">\r\n  <input id=\"searches\" ng-model=\"Filter.filter.find\" type=\"text\" placeholder=\"Поиск\">\r\n  <div id=\"sort\">Сортировка:\r\n    <select ng-model=\"Filter.filter.order\">\r\n      <option value=\"\">без сортировки</option>\r\n      <option value=\"text\">по содержимому</option>\r\n      <option value=\"complete\">по завершенности</option>\r\n      <option value=\"optional\">по важности</option>\r\n      <option value=\"time\">по времени</option>        \r\n    </select>  \r\n  </div>\r\n</div>\r\n<hr>\r\n\r\n<div id=\"mainTodoList\">\r\n  <a ui-sref=\"date.todo\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">Дела</div>\r\n  </a>\r\n</div>\r\n<div id=\"mainMeetings\">\r\n  <a ui-sref=\"date.meeting\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">Встречи</div>\r\n  </a>\r\n</div>\r\n<div id=\"mainEvents\">\r\n  <a ui-sref=\"date.event\" ui-sref-active=\"active\">\r\n    <div class=\"alignCenter\">События</div>\r\n  </a>\r\n</div>\r\n\r\n<div id=\"TMElist\">\r\n  <ui-view></ui-view>\r\n</div>";
 
 /***/ },
 /* 37 */
@@ -41326,6 +41332,92 @@
 	}();
 
 	exports.default = MainController;
+
+/***/ },
+/* 39 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _angular = __webpack_require__(1);
+
+	var _angular2 = _interopRequireDefault(_angular);
+
+	var _formComponent = __webpack_require__(40);
+
+	var _formComponent2 = _interopRequireDefault(_formComponent);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _angular2.default.module('app.form', []).component('theForm', _formComponent2.default);
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var template = __webpack_require__(41);
+
+	'use strict';
+
+	var TheForm = function () {
+	  function TheForm() {
+	    _classCallCheck(this, TheForm);
+
+	    this.$postLink = this.postLink;
+	  }
+
+	  _createClass(TheForm, [{
+	    key: 'validName',
+	    value: function validName(text) {
+	      return !!/^[A-ZА-Я][a-zа-я]*$/.exec(text);
+	    }
+	  }, {
+	    key: 'validMail',
+	    value: function validMail(text) {
+	      return !!/^\w+@[a-z]+\.[a-z]{1,3}$/.exec(text);
+	    }
+	  }, {
+	    key: 'validRobot',
+	    value: function validRobot(text) {
+	      return !!/^yes$/.exec(text);
+	    }
+	  }, {
+	    key: 'postLink',
+	    value: function postLink() {
+	      this.myForm.FName.$validators.FName = this.validName;
+	      this.myForm.SName.$validators.SName = this.validName;
+	      this.myForm.Mail.$validators.Mail = this.validMail;
+	      this.myForm.roboForm.Robot.$validators.Robot = this.validRobot;
+	    }
+	  }]);
+
+	  return TheForm;
+	}();
+
+	exports.default = {
+	  template: template,
+	  controller: TheForm
+	};
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"form\">\r\n<ng-form  name=\"$ctrl.myForm\">\r\n  <div class=\"elemsOfForm\">\r\n    First Name: \r\n    <input  type=\"text\" \r\n            ng-class=\"{valid: $ctrl.myForm.FName.$valid, noValid: !$ctrl.myForm.FName.$valid}\" \r\n            ng-model=\"$ctrl.FName\" \r\n            name =\"FName\">\r\n  </div>\r\n  <div class=\"elemsOfForm\">\r\n    Second Name: \r\n    <input  type=\"text\" \r\n            ng-class=\"{valid: $ctrl.myForm.SName.$valid, noValid: !$ctrl.myForm.SName.$valid}\" \r\n            ng-model=\"$ctrl.SName\" \r\n            name =\"SName\">\r\n  </div>\r\n  <div class=\"elemsOfForm\">\r\n    Mail: \r\n    <input  type=\"text\" \r\n            ng-class=\"{valid: $ctrl.myForm.Mail.$valid, noValid: !$ctrl.myForm.Mail.$valid}\" \r\n            ng-model=\"$ctrl.Mail\" \r\n            name =\"Mail\">\r\n  </div>\r\n  <ng-form name=\"roboForm\">\r\n    <div class=\"elemsOfForm\">\r\n    Are you robot? \r\n    <input  type=\"text\" \r\n            ng-class=\"{valid: $ctrl.myForm.roboForm.Robot.$valid, noValid: !$ctrl.myForm.roboForm.Robot.$valid}\" \r\n            ng-model=\"$ctrl.Robot\" \r\n            name =\"Robot\">\r\n  </div>\r\n  </ng-form>\r\n  Form valid is {{$ctrl.myForm.$valid}}\r\n</ng-form>\r\n</div>";
 
 /***/ }
 /******/ ]);

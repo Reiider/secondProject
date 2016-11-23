@@ -16,6 +16,11 @@ module.exports = {
                 query: {
                   presets: 'es2015',
                 }
+            },
+            {
+                test: /\.html&/,
+                exclude: /node_modules/,
+                loader: "html-loader",
             }
         ]
     }

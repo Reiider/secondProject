@@ -46,6 +46,13 @@ class Configure {
           object: this.getEvent,
           filter: this.getFilter
         }
+      },
+      {
+        name: 'toForm',
+        component: 'theForm',
+        url: '/form',
+        resolve:{
+        }
       }
     ];
     

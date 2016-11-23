@@ -1,15 +1,18 @@
 <!DOCTYPE HTML>
 <html ng-app="app">
   <head>
-    <title></title>
+    <title>Todo</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/list.css">
   </head>
   <body>
-  
     <div class="alignCenter header">Что то вроде ежедневника</div>
+
     <div id="leftBox" ng-controller="MainController as Main">
+      <a ui-sref="toForm" ui-sref-active="active">
+        <div class="alignCenter">Форма</div>
+      </a>
       <ul class="alignCenter">
         <li ng-repeat="elem in Main.obj.list">
           <div class="dateInList">
@@ -22,9 +25,11 @@
     <div id="rightBox">
       <ui-view></ui-view>
     </div>
+
     
+
+
     <script src="./bundle.js"></script>
-    
   </body>
 </html>
 
